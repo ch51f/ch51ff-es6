@@ -1,17 +1,15 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var publicPath = 'http://localhost:3000/';
-var hotMiddlewareScript = 'webpack-hot-middleware/clinet?reload=true';	
+var publicPath = 'http://localhost:5100/';
+var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';	
 
 var devConfig = {
-	entry: {
-
-	},
+	entry: [path.resolve(__dirname, 'example/main'), hotMiddlewareScript],
 	// entry: path.resolve(__dirname, process.env.cd + '/main'),
 
 	output: {
-		filename: './[name]/bundle.js',
+		filename: './bundle.js',
 		path: path.resolve(__dirname, './public'),
 		publicPath: publicPath
 	},

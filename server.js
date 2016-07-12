@@ -30,14 +30,21 @@ if(isDev) {
 		res.sendFile(path.resolve(__dirname, "index.html"))
 	});
 
-	// var reload = require('reload');
-	// var http = require('http');
+	app.get("/example", function(req, res) {
+		res.sendFile(path.resolve(__dirname, "example/index.html"))
+	});
 
-	// var server = http.createServer(app);
-	// reload(server, app);
+	app.get("/example/*", function(req, res) {
+		res.sendFile(path.resolve(__dirname, "example/index.html"))
+	});
 
-	// server.listen(port, function() {
-	app.listen(port, function() {
+	var reload = require('reload');
+	var http = require('http');
+
+	var server = http.createServer(app);
+	reload(server, app);
+
+	server.listen(port, function() {
 		console.log("App (dev) is now running on port 5100!")
 	})
 
