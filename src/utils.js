@@ -222,38 +222,20 @@ const myMath = {
 		}
 		return (arg1 + arg2) / m;
 	},
+	floor: function(value, precision) {
+		if(!precision)
+			precision = 0;
+		if(isNaN(precision))
+			return "invalid precision";
+		if(precision < 0)
+			return "invalid precision";
+		if(isNaN(value))
+			return "invalid value";
+		value = Number(value);
+		let tmp = Math.pow(10, precision);
+		value = this.Mul(value, tem);
+		value = Math.floor(value);
+		value = this.Div(value, tmp);
+		return value;
+	}
 }
-// const FsMath = {
-// 	Add: function(arg1, arg2) {
-// 		if(c > 0) {
-// 			var cm = Math.pow(10, c);
-// 			if(r1 > r2) {
-// 				arg1 = Number(arg1.toString().replace(".", ""));
-// 				arg2 = Number(arg2.toString().replace(".", "")) * cm;
-// 			} else {
-// 				arg1 = Number(arg1.toString().replace(".", "")) * cm;
-// 				arg2 = Number(arg2.toString().replace(".", ""));
-// 			}
-// 		} else {
-// 			arg1 = Number(arg1.toString().replace(".", ""));
-// 			arg2 = Number(arg2.toString().replace(".", ""));
-// 		}
-// 		return (arg1 + arg2) / m;
-// 	},
-// 	floor: function(value, precision) {
-// 		if(!precision)
-// 			precision = 0;
-// 		if(isNaN(precision))
-// 			return "invalid precision";
-// 		if(precision < 0)
-// 			return "invalid precision";
-// 		if(isNaN(value))
-// 			return "invalid value";
-// 		value = Number(value);
-// 		let tmp = Math.pow(10, precision);
-// 		value = this.Mul(value, tmp);
-// 		value = Math.floor(value);
-// 		value = this.Div(value, tmp);
-// 		return value;
-// 	}
-// }
