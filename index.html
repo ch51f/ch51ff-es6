@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo</title>
+	<meta name="format-detection" content="telephone=no"> 
+	<meta name="msapplication-tap-highlight" content="no"> 
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"> 
+	<meta name="apple-mobile-web-app-capable" content="yes"> 
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+</head>
+<body>
+	<h1 id="demoA">click me!</h1>
+	<h1 id="demoB">click me! remove top event</h1>
+	<h1 id="demoC" class="abc">click me toggle class='ab'</h1>
+	<script src="./src/utils.js"></script>
+	<script>
+		console.log(browser.versions);
+		console.log(browser.language);
+		var demoA = document.getElementById('demoA');
+		var demoB = document.getElementById('demoB');
+		var a = function() {
+			alert("this is a click event! and remove click event");
+		}
+		_addEvent(demoA, "click", a)
+		_addEvent(demoB, "click", function() {
+			_removeEvent(demoA, "click", a);
+		});
+		var demoC = document.getElementById('demoC');
+		var b = function() {
+			ClassCore.toggleClass(demoC, 'ab')
+		}
+		_addEvent(demoC, "click", b);
+	</script>
+</body>
+</html>
