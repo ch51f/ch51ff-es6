@@ -178,7 +178,7 @@ const myMath = {
 		}
 		m = Math.pow(10, Math.max(r1, r2));
 		n = (r1 >= r2) ? r1 : r2;
-		return ((this.mul(arg1, m) - this.mul(arg2, m)) / n);
+		return ((this.mul(arg1, m) - this.mul(arg2, m)) / m);
 	},
 	addGroup: function() {
 		if(arguments.length == 0)
@@ -218,7 +218,7 @@ const myMath = {
 			}
 		} else {
 			arg1 = Number(arg1.toString().replace(".", ""));
-			arg2 = Number(arg2.)
+			arg2 = Number(arg2.toString().replace(".", ""));
 		}
 		return (arg1 + arg2) / m;
 	},
