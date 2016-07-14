@@ -30,9 +30,6 @@ var productionConfig = [{
         }]
     },
     plugins: [
-        // new ExtractTextPlugin('./[name]/index.css', {
-        //     allChunks: true
-        // })
         new uglifyJsPlugin({
             compress: {
                 warnings: false 
