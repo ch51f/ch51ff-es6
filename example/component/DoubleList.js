@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 
 import DoubleList from '../../common/list/DoubleList'
 
-import Store from '../store/HomeStore'
+import Store from '../store/DoubleListStore'
 
-export default class Home extends Component {
+class example extends Component {
 	render() {
 		let data = Store.getList()
 		return (
@@ -14,3 +14,5 @@ export default class Home extends Component {
 		)
 	}
 }
+
+export default example

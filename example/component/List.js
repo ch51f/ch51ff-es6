@@ -7,9 +7,10 @@ let list = []
 for(let i = 0; i < 20; i++) {
 	let temp = {};
 	temp.id = i;
-	temp.name = "list name";
-	temp.sub = "this sub";
-	temp.url = 'example/list';
+	temp.name = "列表项";
+	if(i % 2 == 0)
+		temp.sub = "副标题";
+	temp.url = 'list';
 	list.push(temp);
 }
 

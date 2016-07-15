@@ -1,19 +1,40 @@
+/**
+ * @description 列表封装
+ * @params data [{id:'id', name:'标题', sub:"副标题", url:"链接地址（选填）"}] 显示数据 默认 []
+ * @params isLink 是否是链接 默认 flase
+ * @params isOutLink 是否是内部路由 默认 false
+ */
+
 import React, {Component} from 'react'
 import {Link} from 'react-router'
 
 import Arrow from '../svg/ArrowRight'
 
-export default class List extends Component {
+class List extends Component {
 	_renderItem(item) {
-		let {isLink} = this.props;
+		let {isLink, isOutLink} = this.props;
 		if(isLink) {
-			return (
-				<Link key={item.id} to={item.url} className="item link">
-					<span className="title">{item.name}</span>
-					<span className="sub-title">{item.sub}</span>
-					<Arrow />
-				</Link>
-			)
+			if(isOutLink) {
+				return (
+					<a key={item.id} href={item.url} className="item link">
+						<span className="title">{item.name}</span>
+						<span className="sub-title">{item.sub}</span>
+						<i className="icon">
+							<Arrow size="20" color="#888" />
+						</i>
+					</a>
+				)
+			} else {
+				return (
+					<Link key={item.id} to={item.url} className="item link"> 
+						<span className="title">{item.name}</span> 
+						<span className="sub-title">{item.sub}</span> 
+						<i className="icon"> 
+							<Arrow size="20" color="#888" /> 
+						</i> 
+					</Link> 
+				)
+			}
 		} else {
 			return (
 				<div key={item.id} className="item">
@@ -26,7 +47,9 @@ export default class List extends Component {
 	render() {
 		let {data} = this.props;
 		return (
-			<div className="list">{data.map((item) => {return this._renderItem(item)})}</div>
+			<section className="list">{data.map((item) => {return this._renderItem(item)})}</section>
 		)
 	}
 }
+
+export default List
