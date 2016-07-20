@@ -40,6 +40,8 @@
 		function onSuccess(position) {
 			var longitude = position.coords.longitude + 0.008774687519;
 			var latitude = position.coords.latitude + 0.00374531687912;
+			alert(position.coords.longitude)
+			alert(position.coords.latitude)
 
 			var map = new BMap.Map('container');
 

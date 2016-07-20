@@ -1,12 +1,12 @@
-// var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
 var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var productionConfig = [{
     entry: path.resolve(__dirname, 'example/main'),
     output: {
-        filename: './bundle.js',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, './public'),
         publicPath: "/"
     },
@@ -16,10 +16,10 @@ var productionConfig = [{
             loaders: 'url?limit=8192&context=client&name=[path][name].[ext]'
         }, {
             test: /\.css$/,
-            loader: 'style-loader!css-loader'
+            loader: ExtractTextPlugin.extract("style-loader", "css-loader")
         }, {
             test: /\.less$/,
-            loader: 'style-loader!css-loader!less-loader'
+            loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
         }, {
             test: /\.js[x]?$/,
             exclude: /mode_modules/,
@@ -31,10 +31,14 @@ var productionConfig = [{
     },
     plugins: [
         new uglifyJsPlugin({
+            output: {
+                comments: false,
+            },
             compress: {
                 warnings: false 
             } 
-        })
+        }),
+        new ExtractTextPlugin("bundle.css")
     ]
 }];
 

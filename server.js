@@ -34,6 +34,10 @@ if(isDev) {
 		res.sendFile(path.resolve(__dirname, "map.html"))
 	});
 
+	app.get("/map1", function(req, res) {
+		res.sendFile(path.resolve(__dirname, "map1.html"))
+	});
+
 	app.get("/example", function(req, res) {
 		res.sendFile(path.resolve(__dirname, "example/index.html"))
 	});
@@ -54,6 +58,20 @@ if(isDev) {
 
 } else {
 	app.use(express.static(path.join(__dirname, 'public')));
+
+	app.get("/map", function(req, res) {
+		res.sendFile(path.resolve(__dirname, "map.html"))
+	});
+
+	app.get("/example", function(req, res) {
+		res.sendFile(path.resolve(__dirname, "router/example.html"))
+	});
+
+	app.get("/example/*", function(req, res) {
+		res.sendFile(path.resolve(__dirname, "router/example.html"))
+	});
+
+
 	app.listen(port, function() {
 		console.log('App (production) is now running on port 5100!');
 	})

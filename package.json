@@ -13,6 +13,7 @@
     "build-map": "babel src -d lib -s",
     "production": "webpack --config webpack.production.config.js -p",
     "start": "cross-env BABEL_ENV=cjs NODE_ENV=dev node server.js",
+    "sp": "cross-env BABEL_ENV=cjs NODE_ENV=production node server.js",
     "test": "cross-env BABEL_ENV=cjs NODE_ENV=dev node test.server.js",
     "test-es6": "babel-node src/utils.js"
   },
@@ -30,6 +31,7 @@
     "cross-env": "^1.0.8",
     "css-loader": "^0.23.1",
     "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "react": "^0.14.7",

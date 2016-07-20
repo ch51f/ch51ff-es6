@@ -14,6 +14,18 @@ let Store = {
 			id: "List",
 			name: "List",
 			url: "example/list",
+		}, {
+			id: "Loading",
+			name: "Loading",
+			url: "example/loading",
+		}]
+	}, {
+		id: "M",
+		name: "M",
+		data: [{
+			id: "Mask",
+			name: "Mask",
+			url: "example/mask",
 		}]
 	}],
 	getList() {
