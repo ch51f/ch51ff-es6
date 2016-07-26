@@ -27,6 +27,14 @@ let Store = {
 			name: "Mask",
 			url: "example/mask",
 		}]
+	}, {
+		id: "S",
+		name: "S",
+		data: [{
+			id: "Svg",
+			name: "Svg",
+			url: "example/svg",
+		}]
 	}],
 	getList() {
 		return this.list;

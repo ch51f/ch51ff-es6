@@ -1,7 +1,7 @@
 import React from 'react'
 import {Router, Route, IndexRoute, browserHistory, hashHistory} from 'react-router'
 
-import {App, Home, List, DoubleList, Mask, Loading} from './component'
+import {App, Home, List, DoubleList, Mask, Loading, Svg} from './component'
 
 export default (
 	<Router history={browserHistory}>
@@ -11,6 +11,7 @@ export default (
 			<Route path="doublelist" component={DoubleList} />
 			<Route path="mask" component={Mask} />
 			<Route path="loading" component={Loading} />
+			<Route path="svg" component={Svg} />
 		</Route>
 	</Router>
 )
