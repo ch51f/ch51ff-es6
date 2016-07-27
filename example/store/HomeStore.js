@@ -1,5 +1,13 @@
 let Store = {
 	list : [{
+		id: "A",
+		name: "A",
+		data: [{
+			id: "Authority",
+			name: "Authority",
+			url: "example/authority",
+		}]
+	}, {
 		id: "D",
 		name: "D",
 		data: [{

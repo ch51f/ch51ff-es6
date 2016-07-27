@@ -5,5 +5,7 @@ import DoubleList from './DoubleList'
 import Mask from './Mask'
 import Loading from './Loading'
 import Svg from './Svg'
+import Authority from './Authority'
+import Demo from './Demo'
 
-export {App, Home, List, DoubleList, Mask, Loading, Svg} 
+export {App, Home, List, DoubleList, Mask, Loading, Svg, Authority, Demo} 
