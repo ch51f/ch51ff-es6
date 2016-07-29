@@ -39,6 +39,10 @@ let Store = {
 		id: "S",
 		name: "S",
 		data: [{
+			id: "ScrollTable",
+			name: "ScrollTable",
+			url: 'example/scrolltable'
+		}, {
 			id: "Svg",
 			name: "Svg",
 			url: "example/svg",

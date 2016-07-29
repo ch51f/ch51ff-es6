@@ -13,5 +13,6 @@ import Point from './Point'
 import Shield from './Shield'
 import User from './User'
 import Work from './Work'
+import Close from './Close'
 
-export {Addition, ArrowRight, Card, Contact, Deal, Edit, Pen, Grow, ListIcon, Location, Phone, Point, Shield, User, Work}
+export {Addition, ArrowRight, Card, Contact, Deal, Edit, Pen, Grow, ListIcon, Location, Phone, Point, Shield, User, Work, Close}

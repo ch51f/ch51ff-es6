@@ -7,5 +7,6 @@ import Loading from './Loading'
 import Svg from './Svg'
 import Authority from './Authority'
 import Demo from './Demo'
+import ScrollTable from './ScrollTable'
 
-export {App, Home, List, DoubleList, Mask, Loading, Svg, Authority, Demo} 
+export {App, Home, List, DoubleList, Mask, Loading, Svg, Authority, Demo, ScrollTable} 

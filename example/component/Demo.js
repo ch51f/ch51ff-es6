@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 
+import {ScrollTable, Column} from '../../common/scroll/ScrollTable'
+
 export default class Demo extends Component {
 	componentDidMount() {
-		this._testSymbol()
+		// this._testSymbol()
 	}
 	_testSymbol() {
 		let mySymbol = Symbol();
@@ -79,7 +81,10 @@ export default class Demo extends Component {
 	render() {
 		return (
 			<div>
-				Demo
+				<ScrollTable title="姓名">
+					<Column title="姓名" value="name" />
+					<Column title="年龄" value="age" />
+				</ScrollTable>
 			</div>
 		)
 	}

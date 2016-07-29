@@ -1,13 +1,18 @@
 @import "variables.less";
-body, div, p, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, input, textarea, iframe, i, span, em {
+body, div, p, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, input, textarea, iframe, i, span, em, table, th, td, tr {
 	-webkit-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	box-sizing: border-box;
 	word-break: break-all;
 }
-body, div, p, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd {
+body, div, p, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, table, th, td, tr {
+	font-weight: normal;
 	margin: 0;
 	padding: 0;
+}
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
 }
 ul, ol, dl {
 	list-style: none;
