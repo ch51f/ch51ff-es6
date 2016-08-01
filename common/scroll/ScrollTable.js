@@ -196,10 +196,8 @@ class ScrollTable extends Component {
 		})
 		return (
 			<tr key={i}>
-				{data.map((col, index) => {
-					console.log(index)
-					console.log(i)
-					return this._renderFixedTitleCol(col, index)
+				{data.map((col) => {
+					return this._renderFixedTitleCol(col, i)
 				})}
 			</tr>
 		)
