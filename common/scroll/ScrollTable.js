@@ -6,20 +6,21 @@ import React, {Component, PropTypes} from 'react'
 import ClassCore from '../utils/ClassCore'
 
 class ScrollTable extends Component {
-
 	constructor(props){
 		super(props)
-		this.cW = 0;
-		this.cH = 0;
-		this.startX = 0;
-		this.startY = 0;
-		this.endX = 0;
-		this.endY = 0;
-		this.transformX = 0;
-		this.transformY = 0;
-		this.vertical = true;
+		this.cW = 0; 				//内容区宽度
+		this.cH = 0; 				//内容区高度
+		this.startX = 0; 			//touchstart X值
+		this.startY = 0; 			//touchstart Y值
+		this.endX = 0; 				//touchend X值
+		this.endY = 0;				//touchend Y值
+		this.transformX = 0;		//内容区X偏移量
+		this.transformY = 0;		//内容区Y偏移量
+		this.vertical = 0;			//是否垂直 默认0 垂直1 水平2
+		this.isTouch = false;		//是否touch
 	}
 	
+	// 初始化前获取内容区总高宽
 	componentWillMount() {
 		let self = this;
 		let {children, data} = this.props;
@@ -30,6 +31,8 @@ class ScrollTable extends Component {
 		this.cH = 40 * data.length;
 	}
 
+	// touchstart
+	// 获取 touchstart X,Y值，记录touchstarttime, 删除delay Class, 重置vertical
 	_touchStart (e){
 		e = e?e:window.event; 
 		let touch = e.targetTouches[0]; 
@@ -39,69 +42,66 @@ class ScrollTable extends Component {
 		this.touchStartTime = new Date();
 
 		const {headC, conT, conC} = this.refs;
-
-
 		ClassCore.removeClass(headC, 'scroll-delay');
 		ClassCore.removeClass(conT, 'scroll-delay');
 		ClassCore.removeClass(conC, 'scroll-delay');
+
+		this.vertical = 0;
 	}
+
+	// touchmove
+	// 阻止默认事件，记录touchend X,Y值， 计算角度，获取是否是垂直scroll, 内容区scroll
 	_touchMove (e){
 		e = e?e:window.event; 
-		let touch = e.targetTouches[0] 
 		e.preventDefault();
+		let touch = e.targetTouches[0] 
+
 		this.endY = touch.pageY - this.startY+ this.transformY;
 		this.endX = touch.pageX - this.startX + this.transformX;
-		let angle = Math.atan2(Math.abs(touch.pageY - this.startY), Math.abs(touch.pageX - this.startX)) * 180 / Math.PI;
-		if(angle > 45) {
-			this.vertical = true;
+
+		if(this.vertical == 0) {
+			let angle = Math.atan2(Math.abs(touch.pageY - this.startY), Math.abs(touch.pageX - this.startX)) * 180 / Math.PI;
+			this.vertical = angle > 45 ? 1 : 2;
 		} else {
-			this.vertical = false;
-		} 
-
-		let max = 0;
-
-		const {height} = this.props;
-		if(this.vertical) {
-			max = - this.cH + parseInt(height);
-			if(this.endY > 0) {
-				this._transformY(0);
-				this.endY = 0;
-			} else if(this.endY < max) {
-				this._transformY(max);
-				this.endY = max;
-			} else {
+			let max = 0;
+			const {height} = this.props;
+			if(this.vertical == 1) {
+				max = -this.cH + parseInt(height);
+				this.endX = this.transformX;
+				if(this.endY > 0) {
+					this.endY = 0;
+				} else if(this.endY < max) {
+					this.endY = max;
+				}
 				this._transformY(this.endY);
-			}
-			this.endX = this.transformX;
-		} else {
-			max = - this.cW + document.documentElement.offsetWidth;
-			if(this.endX > 0) {
-				this._transformX(0);
-				this.endX = 0;
-			} else if(this.endX < max) {
-				this._transformX(max);
-				this.endX = max;
-			} else {
+			} else if(this.vertical == 2) {
+				max = -this.cW + document.documentElement.offsetWidth;
+				this.endY = this.transformY;
+				if(this.endX > 0) {
+					this.endX = 0;
+				} else if(this.endX < max) {
+					this.endX = max;
+				}
 				this._transformX(this.endX);
-			}
-			this.endY = this.transformY;
-		} 
+			} 
+		}
 	}
+
+	// touchend
+	// 获取touchengtime, 添加 delay class，判断时候有delay偏移，计算偏移X,Y
 	_touchEnd (e){
 		this.touchEndTime = new Date();
 		let timeDif = this.touchEndTime - this.touchStartTime;
 		let more = 0;
-		const {height} = this.props;
 
 		const {headC, conT, conC} = this.refs;
-
-
 		ClassCore.addClass(headC, 'scroll-delay');
 		ClassCore.addClass(conT, 'scroll-delay');
 		ClassCore.addClass(conC, 'scroll-delay');
 
-		if(timeDif < 300) {
-			if(this.vertical) {
+		if(timeDif < 300 && this.vertical != 0) {
+			if(this.vertical == 1) {
+				const {height} = this.props;
 				more = (300 - timeDif) / 50 * (this.endY - this.transformY);
 				this.endY = this.endY + more;
 				if(this.endY > 0) {
@@ -127,6 +127,8 @@ class ScrollTable extends Component {
 		this.transformX = this.endX;
 		this.transformY = this.endY;
 	}
+
+	// X 偏移
 	_transformX(x) {
 		const {headC, conC} = this.refs;
 		headC.style.transform = "translate3d(" + x + "px," + 0 + "px,0)";
@@ -134,6 +136,8 @@ class ScrollTable extends Component {
 		headC.style.webkitTransform = "translate3d(" + x + "px," + 0 + "px,0)";
 		conC.style.webkitTransform = "translate3d(" + x + "px," + this.transformY + "px,0)";
 	}
+
+	// Y 偏移
 	_transformY(y) {
 		const {conT, conC} = this.refs;
 		conT.style.transform = "translate3d(" + 0 + "px," + y + "px,0)";
@@ -143,6 +147,7 @@ class ScrollTable extends Component {
 	}
 
 
+	// headT
 	_renderHeadTh(col, i) {
 		let {title, value, width} = col.props;
 		let w = width ? parseInt(width) : 100;
@@ -151,6 +156,7 @@ class ScrollTable extends Component {
 		)
 	}
 
+	// conT
 	_renderFixedTitle(row, i) {
 		let {fixed} = this.props;
 		let data = [];
@@ -165,12 +171,14 @@ class ScrollTable extends Component {
 			</tr>
 		)
 	}
+	// conT内容
 	_renderFixedTitleCol(col, i) {
 		return (
 			<td key={i}>{col}</td>
 		)
 	}
 
+	// conC
 	_renderCon(row, i) {
 		let {children} = this.props;
 		let data = [];
@@ -190,6 +198,7 @@ class ScrollTable extends Component {
 			</tr>
 		)
 	}
+	// conC内容
 	_renderConCol(col, i) {
 		return (
 			<td key={i} style={{width: col.width}}>{col.value}</td>
@@ -237,13 +246,8 @@ class ScrollTable extends Component {
 	}
 }
 
-class Column extends Component {
-	render() {
-		return (
-			<div>Column</div>
-		)
-	}
-}
+
+class Column extends Component {}
 
 
 export {ScrollTable, Column}
