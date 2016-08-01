@@ -18,6 +18,9 @@ class ScrollTable extends Component {
 		this.transformY = 0;		//内容区Y偏移量
 		this.vertical = 0;			//是否垂直 默认0 垂直1 水平2
 		this.isTouch = false;		//是否touch
+		this.state = {
+			headH: 0
+		}
 	}
 	
 	// 初始化前获取内容区总高宽
@@ -28,7 +31,29 @@ class ScrollTable extends Component {
 			let {width} = item.props;
 			self.cW += width ? parseInt(width) : 100;
 		})
-		this.cH = 40 * data.length;
+		this.cH = 41 * data.length;
+	}
+
+	// 渲染完成后校准高宽
+	componentDidMount() {
+		let {headC, conC} = this.refs;
+		let head_height = headC.offsetHeight;
+		let trs = conC.getElementsByTagName("tr");
+		let conHs = [];
+
+		for(let i = 0; i < trs.length; i++) {
+			conHs.push(trs[i].offsetHeight)
+		}
+
+		this.setState({headH: head_height, conHs: conHs});
+		this._fixedHeadT(head_height)
+	}
+
+	// 校准头部
+	_fixedHeadT(h) {
+		let {headT} = this.refs;
+		headT.style.height = h + "px";
+		headT.style.lineHeight = h + "px";
 	}
 
 	// touchstart
@@ -64,7 +89,10 @@ class ScrollTable extends Component {
 			this.vertical = angle > 45 ? 1 : 2;
 		} else {
 			let max = 0;
-			const {height} = this.props;
+			let {height} = this.props;
+			let {headH} = this.state;
+
+			height = parseFloat(height) - headH;
 			if(this.vertical == 1) {
 				max = -this.cH + parseInt(height);
 				this.endX = this.transformX;
@@ -101,7 +129,10 @@ class ScrollTable extends Component {
 
 		if(timeDif < 300 && this.vertical != 0) {
 			if(this.vertical == 1) {
-				const {height} = this.props;
+				let {height} = this.props;
+				let {headH} = this.state;
+
+				height = parseFloat(height) - headH;
 				more = (300 - timeDif) / 50 * (this.endY - this.transformY);
 				this.endY = this.endY + more;
 				if(this.endY > 0) {
@@ -165,16 +196,20 @@ class ScrollTable extends Component {
 		})
 		return (
 			<tr key={i}>
-				{data.map((col, i) => {
-					return this._renderFixedTitleCol(col, i)
+				{data.map((col, index) => {
+					console.log(index)
+					console.log(i)
+					return this._renderFixedTitleCol(col, index)
 				})}
 			</tr>
 		)
 	}
 	// conT内容
 	_renderFixedTitleCol(col, i) {
+		let {conHs} = this.state;
+		// console.log(i)
 		return (
-			<td key={i}>{col}</td>
+			<td key={i} style={conHs ? {height: conHs[i]} : null}>{col}</td>
 		)
 	}
 
@@ -207,10 +242,12 @@ class ScrollTable extends Component {
 
 	render() {
 		let {title, children, data, fixedWidth, height} = this.props;
+		let {headH} = this.state;
+		height = parseFloat(height) - headH;
 		return (
 			<div className="scroll-table" ref="scroll" onTouchStart={this._touchStart.bind(this)} onTouchMove={this._touchMove.bind(this)} onTouchEnd={this._touchEnd.bind(this)} >
 				<div className="head">
-					<div className="fixed-name" style={{width: fixedWidth}}>{title}</div>
+					<div className="fixed-name" ref="headT" style={{width: fixedWidth}}>{title}</div>
 					<div className="scroll-panel"style={{paddingLeft: fixedWidth}}>
 						<table className="columns" ref="headC" style={{width: this.cW}}>
 							<tbody>

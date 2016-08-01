@@ -216,7 +216,7 @@ let Store = {
 		profession: "软件工程师",
 		position: "开发"
 	}, {
-		name: "张三",
+		name: "李四",
 		age: "27",
 		male: "男",
 		address: "云南省昆明市广福城",
