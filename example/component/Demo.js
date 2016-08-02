@@ -94,6 +94,36 @@ export default class Demo extends Component {
 				<p>offsetHeight: {document.documentElement.offsetHeight}</p>
 				<p>screenHeight: {window.screen.height}</p>
 				<p>{navigator.userAgent}</p>
+				<table>
+					<tbody>
+						<tr>
+							<td>10</td>
+							<td>100</td>
+							<td>1000</td>
+							<td>10000</td>
+							<td>100000</td>
+							<td>1000000</td>
+							<td>10000000</td>
+							<td>100000000</td>
+							<td>10</td>
+							<td>100</td>
+							<td>1000</td>
+							<td>10000</td>
+							<td>100000</td>
+							<td>1000000</td>
+							<td>10000000</td>
+							<td>100000000</td>
+							<td>10</td>
+							<td>100</td>
+							<td>1000</td>
+							<td>10000</td>
+							<td>100000</td>
+							<td>1000000</td>
+							<td>10000000</td>
+							<td>100000000</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		)
 	}

@@ -248,7 +248,7 @@ class ScrollTable extends Component {
 			<div className="scroll-table" ref="scroll" onTouchStart={this._touchStart.bind(this)} onTouchMove={this._touchMove.bind(this)} onTouchEnd={this._touchEnd.bind(this)} >
 				<div className="head">
 					<div className="fixed-name" ref="headT" style={{width: fixedWidth}}>{title}</div>
-					<div className="scroll-panel"style={{paddingLeft: fixedWidth}}>
+					<div className="panel"style={{paddingLeft: fixedWidth}}>
 						<table className="columns" ref="headC" style={{width: this.cW}}>
 							<tbody>
 								<tr>
@@ -268,7 +268,7 @@ class ScrollTable extends Component {
 							})}
 						</tbody>
 					</table>
-					<div className="scroll-panel"style={{paddingLeft: fixedWidth}}>
+					<div className="panel"style={{paddingLeft: fixedWidth}}>
 						<table className="con" ref="conC" style={{width: this.cW}}>
 							<tbody>
 								{data.map((row, i) => {
