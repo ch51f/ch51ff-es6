@@ -90,6 +90,10 @@ export default class Demo extends Component {
 	render() {
 		return (
 			<div>
+				<p>clientHeight: {document.documentElement.clientHeight}</p>
+				<p>offsetHeight: {document.documentElement.offsetHeight}</p>
+				<p>screenHeight: {window.screen.height}</p>
+				<p>{navigator.userAgent}</p>
 			</div>
 		)
 	}

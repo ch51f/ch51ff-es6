@@ -1,5 +1,7 @@
 /**
  * @description 滑动table
+ * ScrollTable title 头部左侧名称 fixed [] 头部左侧显示列 fixedWidth 左侧宽度  height 内容区高度 data [] 数据数组
+ * Column title 列名 value 数据key width 列宽
  */
 import React, {Component, PropTypes} from 'react'
 

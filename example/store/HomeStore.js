@@ -3,14 +3,30 @@ let Store = {
 		id: "A",
 		name: "A",
 		data: [{
+			id: "Alert",
+			name: "Alert",
+			url: "example/alert",
+		}, {
 			id: "Authority",
 			name: "Authority",
 			url: "example/authority",
 		}]
 	}, {
+		id: "B",
+		name: "B",
+		data: [{
+			id: "Button",
+			name: "Button",
+			url: "example/button",
+		}]
+	}, {
 		id: "D",
 		name: "D",
 		data: [{
+			id: "Demo",
+			name: "Demo",
+			url: "example/demo",
+		}, {
 			id: "DoubleList",
 			name: "DoubleList",
 			url: "example/doublelist",
@@ -39,6 +55,10 @@ let Store = {
 		id: "S",
 		name: "S",
 		data: [{
+			id: "ScrollPanel",
+			name: "ScrollPanel",
+			url: 'example/scrollpanel'
+		}, {
 			id: "ScrollTable",
 			name: "ScrollTable",
 			url: 'example/scrolltable'

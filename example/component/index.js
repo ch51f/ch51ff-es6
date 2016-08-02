@@ -8,5 +8,8 @@ import Svg from './Svg'
 import Authority from './Authority'
 import Demo from './Demo'
 import ScrollTable from './ScrollTable'
+import Button from './Button'
+import ScrollPanel from './ScrollPanel'
+import Alert from './Alert'
 
-export {App, Home, List, DoubleList, Mask, Loading, Svg, Authority, Demo, ScrollTable} 
+export {App, Home, List, DoubleList, Mask, Loading, Svg, Authority, Demo, ScrollTable, Button, ScrollPanel, Alert} 
