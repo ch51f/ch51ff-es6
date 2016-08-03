@@ -10,28 +10,31 @@ export default class Example extends Component {
 		let height = document.documentElement.offsetHeight;
 		return (
 			<div>
-				<ScrollTable title="姓名" fixed={["name"]} data={data} fixedWidth="60" height={height} >
-					<Column title="姓名姓名姓名" value="name" width="60" />
-					<Column title="年龄" value="age" width="40" />
-					<Column title="性别" value="male" width="40" />
-					<Column title="地址" value="address" width="80" />
-					<Column title="电话" value="mobile" />
-					<Column title="职业" value="profession" />
-					<Column title="职位" value="position"  width="60" />
-					<Column title="姓名" value="name" width="60" />
-					<Column title="年龄" value="age" width="40" />
-					<Column title="性别" value="male" width="40" />
-					<Column title="地址" value="address" width="120" />
-					<Column title="电话" value="mobile" />
-					<Column title="职业" value="profession" />
-					<Column title="职位" value="position"  width="60" />
-					<Column title="姓名" value="name" width="60" />
-					<Column title="年龄" value="age" width="40" />
-					<Column title="性别" value="male" width="40" />
-					<Column title="地址" value="address" width="120" />
-					<Column title="电话" value="mobile" />
-					<Column title="职业" value="profession" />
-					<Column title="职位" value="position"  width="60" />
+				<ScrollTable title="姓名" values={["profession"]} data={data} fixedWidth="60" height={height} autoWidth={true} defaultWidth={100} >
+					<Column title="姓名姓名姓名" value="name">
+						<p>姓名</p>
+						<p>姓名姓名</p>
+					</Column>
+					<Column title="年龄" value="age"/>
+					<Column title="性别" value="male"/>
+					<Column title="地址" value="address"/>
+					<Column title="电话" value="mobile"/>
+					<Column title="职业" value="profession"/>
+					<Column title="职位" value="position"/>
+					<Column title="姓名" value="name"/>
+					<Column title="年龄" value="age"/>
+					<Column title="性别" value="male"/>
+					<Column title="地址" value="address"/>
+					<Column title="电话" value="mobile"/>
+					<Column title="职业" value="profession"/>
+					<Column title="职位" value="position"/>
+					<Column title="姓名" value="name"/>
+					<Column title="年龄" value="age"/>
+					<Column title="性别" value="male"/>
+					<Column title="地址" value="address"/>
+					<Column title="电话" value="mobile"/>
+					<Column title="职业" value="profession"/>
+					<Column title="职位" value="position"/>
 				</ScrollTable>
 			</div>
 		)

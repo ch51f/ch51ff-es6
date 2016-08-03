@@ -16,6 +16,14 @@
 	-ms-transition-delay: 0s;
 	transition-delay: 0s;
 }
+.no-wrap {
+	white-space: nowrap;
+}
+.break-wrap {
+	white-space: normal;
+	word-break:break-all;
+	word-wrap:break-word;
+}
 .scroll-table {
 	font-size: 12px;
 	.panel {
@@ -28,16 +36,17 @@
 		.fixed-name {
 			.txt-c;
 			background: #fff;
-			// border-right: 1px solid #ddd;
+			color: #374b79;
 			line-height: 40px;
 			position: absolute; left: 0; top: 0;
+			padding: 0 3px;
 			width: 100px;
 			z-index: 2;
 		}
 		.columns {
 			.column {
 				.txt-c;
-				// border-right: 1px solid #ddd;
+				color: #374b79;
 				line-height: 20px;
 				width: 100px;
 				padding: 10px 3px;
@@ -46,29 +55,25 @@
 	}
 	.content {
 		border-bottom: 1px solid #ddd;
-		// overflow: hidden;
+		overflow: hidden;
 		position: relative;
 		.fixed-title {
 			background: #fff;
-			// border-right: 1px solid #ddd;
 			position: absolute; left: 0; top: 0;
-			// width: 100px;
 			z-index: 2;
 			td {
 				.txt-c;
 				background: #fff;
 				border-bottom: 1px solid #ddd;
 				line-height: 20px;
-				padding: 10px 0;
+				padding:10px 3px; 
 			}
 		}
 		.con {
 			td {
 				.txt-c;
 				border-bottom: 1px solid #ddd;
-				// border-right: 1px solid #ddd;
 				line-height: 20px;
-				// width: 100px;
 				padding: 10px 3px;
 			}
 		}
