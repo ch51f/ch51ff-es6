@@ -32,12 +32,18 @@ class ScrollTable extends Component {
 	// 初始化前获取内容区总高宽
 	componentWillMount() {
 		let self = this;
-		let {children, data} = this.props;
-		// children.map((item) => {
-		// 	let {width} = item.props;
-		// 	self.cW += width ? parseInt(width) : 100;
-		// })
-		// this.cH = 41 * data.length;
+		let {children, data, autoWidth, defaultWidth} = this.props;
+
+		if(!autoWidth) {
+			let con_width = 0;
+
+			children.map((item, i) => {
+				let {width} = item.props;
+				con_width += width ? parseFloat(width) : parseFloat(defaultWidth)
+			})
+
+			this.setState({con_width: con_width});
+		}
 	}
 
 	// 渲染完成后校准高宽
@@ -68,19 +74,6 @@ class ScrollTable extends Component {
 		}
 
 		this.setState({top_height: top_height, con_height: con_height, con_width: con_width, con_heights: con_heights, con_widths: con_widths});
-
-
-		// let head_height = headC.offsetHeight;
-
-		// let trs = conC.getElementsByTagName("tr");
-		// let conHs = [];
-
-		// for(let i = 0; i < trs.length; i++) {
-		// 	conHs.push(trs[i].offsetHeight)
-		// }
-
-		// this.setState({headH: head_height, conHs: conHs});
-		// this._fixedHeadT(head_height)
 	}
 
 	// touchstart
@@ -210,12 +203,19 @@ class ScrollTable extends Component {
 
 	// headT
 	_renderHeadTh(col, i) {
+		let {autoWidth, defaultWidth} = this.props;
 		let {title, value, width, children} = col.props;
 		let {top_height, con_widths} = this.state;
-		let cls = width ? "column break-wrap1" : "column";
-		return (
-			<th key={i} className={cls} style={{height: top_height, width: con_widths[i]}}>{children ? children : title}</th>
-		)
+		let cls = "column";
+		if(autoWidth) {
+			return (
+				<th key={i} className={cls} style={{height: top_height, width: con_widths[i]}}>{children ? children : title}</th>
+			)
+		} else {
+			return (
+				<th key={i} className={cls} style={{height: top_height, width: width ? width : defaultWidth}}>{children ? children : title}</th>
+			)
+		}
 	}
 
 	// conT
@@ -237,17 +237,17 @@ class ScrollTable extends Component {
 	_renderFixedTitleCol(col, i) {
 		let {con_heights} = this.state;
 		return (
-			<td className="break-wrap" key={i} style={{height: con_heights[i]}}>{col}</td>
+			<td key={i} style={{height: con_heights[i]}}>{col}</td>
 		)
 	}
 
 	// conC
 	_renderCon(row, i) {
-		let {children} = this.props;
+		let {children, autoWidth, defaultWidth} = this.props;
 		let data = [];
 		children.map((item) => {
 			let temp = {value: ""};
-			temp.width = item.props.width ? parseInt(item.props.width) : null;
+			temp.width = item.props.width ? parseInt(item.props.width) : defaultWidth;
 			if(row.hasOwnProperty(item.props.value)) {
 				temp.value = row[item.props.value]
 			}
@@ -263,11 +263,17 @@ class ScrollTable extends Component {
 	}
 	// conC内容
 	_renderConCol(col, i, j) {
+		let {autoWidth} = this.props;
 		let {con_heights, con_widths} = this.state;
-		let cls = col.width ? "break-wrap1" : ""; 
-		return (
-			<td key={i} className={cls} style={{height: con_heights[j], width: con_widths[i]}}>{col.value}</td>
-		)
+		if(autoWidth) {
+			return (
+				<td key={i} style={{height: con_heights[j], width: con_widths[i]}}>{col.value}</td>
+			)
+		} else {
+			return (
+				<td key={i} style={{height: con_heights[j], width: col.width}}>{col.value}</td>
+			)
+		}
 	}
 
 	render() {

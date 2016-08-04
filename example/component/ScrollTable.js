@@ -17,7 +17,7 @@ export default class Example extends Component {
 					</Column>
 					<Column title="年龄" value="age"/>
 					<Column title="性别" value="male"/>
-					<Column title="地址" value="address"/>
+					<Column title="地址" value="address" width={80}/>
 					<Column title="电话" value="mobile"/>
 					<Column title="职业" value="profession"/>
 					<Column title="职位" value="position"/>
