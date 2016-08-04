@@ -113,6 +113,9 @@ class ScrollTable extends Component {
 				let {height} = this.props;
 				let {con_height, top_height} = this.state;
 				height = parseFloat(height) - top_height;
+				let {con} = this.refs;
+				if(con.offsetHeight < height)
+					return false
 				max = -con_height + parseInt(height);
 				this.endX = this.transformX;
 				if(this.endY > 0) {
@@ -154,6 +157,9 @@ class ScrollTable extends Component {
 				let {height} = this.props;
 
 				height = parseFloat(height) - top_height;
+				let {con} = this.refs;
+				if(con.offsetHeight < height)
+					return false
 				more = (300 - timeDif) / 50 * (this.endY - this.transformY);
 				this.endY = this.endY + more;
 				if(this.endY > 0) {
@@ -162,6 +168,7 @@ class ScrollTable extends Component {
 				if(this.endY < -con_height + parseInt(height)) {
 					this.endY = -con_height + parseInt(height)
 				}
+				this.transformY = this.endY;
 				this._transformY(this.endY);
 			} else {
 				let {con_width} = this.state;
@@ -174,28 +181,30 @@ class ScrollTable extends Component {
 				if(this.endX < -con_width + document.documentElement.offsetWidth - fixedWidth) {
 					this.endX = -con_width + document.documentElement.offsetWidth - fixedWidth
 				}
+				this.transformX = this.endX;
 				this._transformX(this.endX);
 			}
 		}
-
-		this.transformX = this.endX;
-		this.transformY = this.endY;
 	}
 
 	// X 偏移
 	_transformX(x) {
-		const {headC, conC} = this.refs;
+		const {headC, conT, conC} = this.refs;
 		headC.style.transform = "translate3d(" + x + "px," + 0 + "px,0)";
+		conT.style.transform = "translate3d(0," + this.transformY + "px,0)";
 		conC.style.transform = "translate3d(" + x + "px," + this.transformY + "px,0)";
 		headC.style.webkitTransform = "translate3d(" + x + "px," + 0 + "px,0)";
+		conT.style.webkitTransform = "translate3d(0," + this.transformY + "px,0)";
 		conC.style.webkitTransform = "translate3d(" + x + "px," + this.transformY + "px,0)";
 	}
 
 	// Y 偏移
 	_transformY(y) {
-		const {conT, conC} = this.refs;
+		const {headC, conT, conC} = this.refs;
+		headC.style.transform = "translate3d(" + this.transformX + "px,0,0)";
 		conT.style.transform = "translate3d(" + 0 + "px," + y + "px,0)";
 		conC.style.transform = "translate3d(" + this.transformX + "px," + y + "px,0)";
+		headC.style.webkitTransform = "translate3d(" + this.transformX + "px,0,0)";
 		conT.style.webkitTransform = "translate3d(" + 0 + "px," + y + "px,0)";
 		conC.style.webkitTransform = "translate3d(" + this.transformX + "px," + y + "px,0)";
 	}
@@ -237,7 +246,7 @@ class ScrollTable extends Component {
 	_renderFixedTitleCol(col, i) {
 		let {con_heights} = this.state;
 		return (
-			<td key={i} style={{height: con_heights[i]}}>{col}</td>
+			<td key={i} className="break-wrap" style={{height: con_heights[i]}}>{col}</td>
 		)
 	}
 
@@ -304,7 +313,7 @@ class ScrollTable extends Component {
 						</table>
 					</div>
 				</div>
-				<div className="content" style={{height: height}}>
+				<div className="content" ref="con" style={{maxHeight: height}}>
 					<table className="fixed-title" ref="conT" style={{width: fixedWidth}}>
 						<tbody>
 							{data.map((row, i) => {
