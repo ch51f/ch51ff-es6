@@ -1,0 +1,64 @@
+.fch-message {
+	position: fixed;
+	top: 40px;
+	left: 0;
+	width: 100%;
+	z-index: 9999;
+	-webkit-transition: all .5s;
+	transition: all .5s;
+
+	-webkit-transform: translate3d(0,-300%,0);
+	transform: translate3d(0,-300%,0);
+
+	.con {
+		background-color: rgba(1, 1, 1, 0.7);
+		border-radius: @radius;
+		color: @color-white;
+		margin: 0 auto;
+		padding: @edge-sm;
+		width: 86%;
+	}
+}
+
+.fch-message.show {
+	-webkit-animation-name: fch-message-show;
+	animation-name: fch-message-show;
+	-webkit-animation-duration: 4s; 
+	animation-duration: 4s; 
+	-webkit-animation-fill-mode: both; 
+	animation-fill-mode: both;
+}
+
+@keyframes fch-message-show{
+	0%{
+		opacity: 0;
+		transform: translate3d(0,-300%,0); 
+	} 
+	40%,80% {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+	99% {
+		opacity: 0;
+	}
+	100%{
+		opacity: 0; 
+		transform: translate3d(0,-300%,0); 
+	}
+}
+@-webkit-keyframes fch-message-show{
+	0%{
+		opacity: 0;
+		-webkit-transform: translate3d(0,-300%,0); 
+	} 
+	40%,80% {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 0, 0);
+	}
+	99% {
+		opacity: 0;
+	}
+	100%{
+		-webkit-transform: translate3d(0,-300%,0); 
+	}
+}

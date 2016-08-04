@@ -11,5 +11,7 @@ import ScrollTable from './ScrollTable'
 import Button from './Button'
 import ScrollPanel from './ScrollPanel'
 import Alert from './Alert'
+import Message from './Message'
+import WaterMark from './WaterMark'
 
-export {App, Home, List, DoubleList, Mask, Loading, Svg, Authority, Demo, ScrollTable, Button, ScrollPanel, Alert} 
+export {App, Home, List, DoubleList, Mask, Loading, Svg, Authority, Demo, ScrollTable, Button, ScrollPanel, Alert, Message, WaterMark} 

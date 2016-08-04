@@ -50,6 +50,10 @@ let Store = {
 			id: "Mask",
 			name: "Mask",
 			url: "example/mask",
+		}, {
+			id: "Message",
+			name: "Message",
+			url: "example/message",
 		}]
 	}, {
 		id: "S",
@@ -66,6 +70,14 @@ let Store = {
 			id: "Svg",
 			name: "Svg",
 			url: "example/svg",
+		}]
+	}, {
+		id: "W",
+		name: "W",
+		data: [{
+			id: "WaterMark",
+			name: "WaterMark",
+			url: 'example/watermark'
 		}]
 	}],
 	getList() {
