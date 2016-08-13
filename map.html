@@ -29,7 +29,8 @@
 		function getLocation() {
 			var options= {
 				enableHighAccuracy: true,
-				maximumAge: 1000
+				maximumAge: 1000,
+				timeout: 5000
 			}
 			if(navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
@@ -40,11 +41,8 @@
 		function onSuccess(position) {
 			var longitude = position.coords.longitude + 0.008774687519;
 			var latitude = position.coords.latitude + 0.00374531687912;
-			alert(position.coords.longitude)
-			alert(position.coords.latitude)
 
 			var map = new BMap.Map('container');
-
 			var point = new BMap.Point(longitude, latitude);
 			map.centerAndZoom(point, 19);
 			var marker = new BMap.Marker(point);
@@ -52,6 +50,7 @@
 			map.addOverlay(marker);
 		}
 		function onError(error) {
+			alert(error.code)
 			switch(error.code) {
 				case 1:
 					alert("位置服务被拒绝");

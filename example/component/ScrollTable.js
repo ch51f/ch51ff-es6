@@ -6,11 +6,14 @@ import Store from '../store/ScrollTableStore'
 
 export default class Example extends Component {
 	render() {
-		let data = Store.getList();
+		let data = Store.getList(), temp = [];
+		for(let i = 0; i < 7; i++) {
+			temp.push(data[i])
+		}
 		let height = document.documentElement.offsetHeight;
 		return (
 			<div>
-				<ScrollTable title="姓名" values={["profession"]} data={data} fixedWidth="60" height={height} autoWidth={true} defaultWidth={100} >
+				<ScrollTable title="姓名" values={["profession"]} data={temp} fixedWidth="60" height={height} autoWidth={true} defaultWidth={100} >
 					<Column title="姓名姓名姓名" value="name">
 						<p>姓名</p>
 						<p>姓名姓名</p>
