@@ -86,10 +86,16 @@ class ScrollTable extends Component {
 
 		this.touchStartTime = new Date();
 
-		const {headC, conT, conC} = this.refs;
-		ClassCore.removeClass(headC, 'scroll-delay');
-		ClassCore.removeClass(conT, 'scroll-delay');
-		ClassCore.removeClass(conC, 'scroll-delay');
+		// const {headC, conT, conC} = this.refs;
+
+		// headC.style.transition = "";
+		// headC.style.transition = "";
+
+		this._setTransition("");
+
+		// ClassCore.removeClass(headC, 'scroll-delay');
+		// ClassCore.removeClass(conT, 'scroll-delay');
+		// ClassCore.removeClass(conC, 'scroll-delay');
 
 		this.vertical = 0;
 	}
@@ -146,10 +152,11 @@ class ScrollTable extends Component {
 		let timeDif = this.touchEndTime - this.touchStartTime;
 		let more = 0;
 
-		const {headC, conT, conC} = this.refs;
-		ClassCore.addClass(headC, 'scroll-delay');
-		ClassCore.addClass(conT, 'scroll-delay');
-		ClassCore.addClass(conC, 'scroll-delay');
+		// const {headC, conT, conC} = this.refs;
+		// ClassCore.addClass(headC, 'scroll-delay');
+		// ClassCore.addClass(conT, 'scroll-delay');
+		// ClassCore.addClass(conC, 'scroll-delay');
+
 
 		if(timeDif < 300 && this.vertical != 0) {
 			if(this.vertical == 1) {
@@ -168,6 +175,12 @@ class ScrollTable extends Component {
 				if(this.endY < -con_height + parseInt(height)) {
 					this.endY = -con_height + parseInt(height)
 				}
+				if(Math.abs(more) > 500) {
+					this._setTransition("transform 0.5s ease-out 0s");
+				} else {
+					this._setTransition("transform 0.2s ease-out 0s");
+				}
+
 				this.transformY = this.endY;
 				this._transformY(this.endY);
 			} else {
@@ -181,6 +194,13 @@ class ScrollTable extends Component {
 				if(this.endX < -con_width + document.documentElement.offsetWidth - fixedWidth) {
 					this.endX = -con_width + document.documentElement.offsetWidth - fixedWidth
 				}
+				
+				if(Math.abs(more) > 500) {
+					this._setTransition("transform 0.5s ease-out 0s");
+				} else {
+					this._setTransition("transform 0.2s ease-out 0s");
+				}
+
 				this.transformX = this.endX;
 				this._transformX(this.endX);
 			}
@@ -207,6 +227,16 @@ class ScrollTable extends Component {
 		headC.style.webkitTransform = "translate3d(" + this.transformX + "px,0,0)";
 		conT.style.webkitTransform = "translate3d(" + 0 + "px," + y + "px,0)";
 		conC.style.webkitTransform = "translate3d(" + this.transformX + "px," + y + "px,0)";
+	}
+
+	_setTransition(val) {
+		const {headC, conT, conC} = this.refs;
+		headC.style.transition = val;
+		conT.style.transition = val;
+		conC.style.transition = val;
+		headC.style.webkitTransition = "-webkit-" + val;
+		conT.style.webkitTransition = "-webkit-" + val;
+		conC.style.webkitTransition = "-webkit-" + val;
 	}
 
 
