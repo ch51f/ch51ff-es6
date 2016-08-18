@@ -29,6 +29,11 @@ var productionConfig = [{
             }
         }]
     },
+    resolve: {
+        alias: {
+            'common': path.join(__dirname, 'common') 
+        } 
+    },
     plugins: [
         new uglifyJsPlugin({
             output: {
@@ -38,7 +43,8 @@ var productionConfig = [{
                 warnings: false 
             } 
         }),
-        new ExtractTextPlugin("bundle.css")
+        new ExtractTextPlugin("bundle.css"),
+        new webpack.BannerPlugin('This file is created by ch51ff')
     ]
 }];
 

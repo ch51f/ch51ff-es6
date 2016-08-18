@@ -23,10 +23,6 @@ let Store = {
 		id: "D",
 		name: "D",
 		data: [{
-			id: "Demo",
-			name: "Demo",
-			url: "example/demo",
-		}, {
 			id: "DoubleList",
 			name: "DoubleList",
 			url: "example/doublelist",
