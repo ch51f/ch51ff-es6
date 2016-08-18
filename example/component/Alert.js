@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
-import Alert from "../../common/dialog/Alert"
-import Mask from "../../common/mask/Mask"
+import Alert from "common/dialog/Alert"
+import Mask from "common/mask/Mask"
 
 export default class Example extends Component {
 	constructor(props) {

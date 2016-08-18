@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import DoubleList from '../../common/list/DoubleList'
+import DoubleList from 'common/list/DoubleList'
 
 import Store from '../store/DoubleListStore'
 

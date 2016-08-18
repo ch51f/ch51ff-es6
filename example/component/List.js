@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import List from '../../common/list/List'
+import List from 'common/list/List'
 
 let list = []
 

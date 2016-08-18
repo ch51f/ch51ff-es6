@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import Loading from '../../common/loading/Loading'
+import Loading from 'common/loading/Loading'
 
 export default class Example extends Component {
 	render() {

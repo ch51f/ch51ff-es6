@@ -33,6 +33,13 @@ var devConfig = {
 			}
 		}]
 	},
+
+	resolve: {
+		alias: {
+			'common': path.join(__dirname, 'common') 
+		} 
+	},
+
 	plugins: [
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.HotModuleReplacementPlugin(),

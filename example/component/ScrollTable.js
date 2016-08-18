@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {ScrollTable, Column} from '../../common/scroll/ScrollTable'
+import {ScrollTable, Column} from 'common/scroll/ScrollTable'
 
 import Store from '../store/ScrollTableStore'
 
@@ -14,11 +14,14 @@ export default class Example extends Component {
 		return (
 			<div>
 				<ScrollTable title="姓名" values={["profession"]} data={data} fixedWidth="60" height={height} autoWidth={true} defaultWidth={100} >
-					<Column title="姓名姓名姓名" value="name">
+					<Column title="姓名姓名姓名" value="name" colspan="2" colName="姓名姓名">
+						<p className="empty" />
 						<p>姓名</p>
-						<p>姓名姓名</p>
 					</Column>
-					<Column title="年龄" value="age"/>
+					<Column title="年龄" value="age">
+						<p className="empty" />
+						<p>年龄</p>
+					</Column>
 					<Column title="性别" value="male"/>
 					<Column title="地址" value="address" width={80}/>
 					<Column title="电话" value="mobile"/>

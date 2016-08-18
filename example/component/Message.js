@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import Message from "../../common/dialog/Message"
+import Message from "common/dialog/Message"
 
 export default class Example extends Component {
 	constructor(props) {

@@ -13,6 +13,7 @@ import Arrow from '../svg/ArrowRight'
 class List extends Component {
 	_renderItem(item) {
 		let {isLink, isOutLink} = this.props;
+		let color = "#ddd"
 		if(isLink) {
 			if(isOutLink) {
 				return (
@@ -20,7 +21,7 @@ class List extends Component {
 						<span className="title">{item.name}</span>
 						<span className="sub-title">{item.sub}</span>
 						<i className="icon">
-							<Arrow size="20" color="#888" />
+							<Arrow size="20" color={color} />
 						</i>
 					</a>
 				)
@@ -30,7 +31,7 @@ class List extends Component {
 						<span className="title">{item.name}</span> 
 						<span className="sub-title">{item.sub}</span> 
 						<i className="icon"> 
-							<Arrow size="20" color="#888" /> 
+							<Arrow size="20" color={color} /> 
 						</i> 
 					</Link> 
 				)

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Router, {Link} from 'react-router';
 
-import Scroll from '../../common/scroll/ScrollPanel';
+import Scroll from 'common/scroll/ScrollPanel';
 
 class Example extends Component{
 	constructor(props,context) {

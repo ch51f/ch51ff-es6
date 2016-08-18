@@ -10,6 +10,9 @@ body, div, p, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, table, th, td, tr 
 	margin: 0;
 	padding: 0;
 }
+svg {
+	vertical-align: top;
+}
 table {
 	border-spacing: 0;
 	border-collapse: collapse;
@@ -117,7 +120,6 @@ a {
 	text-align: center;
 }
 
-/***************盒子模型 start***************/
 .box {
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -147,121 +149,4 @@ a {
 	-webkit-box-flex:4;
 	-ms-box-flex:4;
 	flex:4;
-}
-
-.vbox{
-  -webkit-box-align:center;
-  box-align:center;
-  -ms-flex-align:center;
-  -webkit-align-items:center;
-  -moz-align-items:center;
-  -ms-align-items:center;
-  align-items: center;
-}
-.hbox{
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  -moz-justify-content:center;
-  -ms-justify-content:center;
-  justify-content:center;
-}
-.box-center{
-  .vbox;
-  .hbox;
-}
-.chid-pos(@orient,@flow){
-  -webkit-box-orient: @orient;
-  -moz-box-orient: @orient;
-  -ms-box-orient: @orient;
-  box-orient: @orient;
-  -webkit-flex-flow: @flow;
-  -moz-flex-flow: @flow;
-  -ms-flex-flow: @flow;
-  flex-flow: @flow;
-}
-.horizontal{
-  .chid-pos(horizontal,row nowrap);
-}
-.vertical{
-  .chid-pos(vertical,column wrap);
-}
-.stretch{
-  width: 100%;
-  height: 100%;
-}
-/***************盒子模型 end***************/
-
-/***************分割线 start**************/
-.scal-y-line{
-	-webkit-transform-origin: 0 0;
-	transform-origin: 0 0;
-	-moz-transform-origin: 0 0;
-	-ms-transform-origin: 0 0;
-	-webkit-transform: scaleY(0.5); 
-	-moz-transform: scaleY(0.5); 
-	-ms-transform: scaleY(0.5); 
-	transform: scaleY(0.5);
-}
-.scal-x-line{
-	-webkit-transform-origin: 0 0;
-	transform-origin: 0 0;
-	-moz-transform-origin: 0 0;
-	-ms-transform-origin: 0 0; 
-	-webkit-transform: scaleX(0.5); 
-	-moz-transform: scaleX(0.5); 
-	-ms-transform: scaleX(0.5); 
-	transform: scaleX(0.5);
-}
-.thin-by-line:after{ 
-	content: ''; 
-	position: absolute; 
-	left: 0; 
-	bottom: 0; 
-	right: 0; 
-	border-top: #D5D5D6 solid 1px;
-	.scal-y-line;
-}
-.thin-ty-line:before{ 
-	content: " ";
-	position: absolute; 
-	left: 0; 
-	top: 0; 
-	height: 1px;
-	width: 100%; 
-	border-top: #D5D5D6 solid 1px;
-	z-index: 2;
-	.scal-y-line;
-}
-.thin-xr-line:after{ 
-	content: " "; 
-	position: absolute;
-	right: 0; 
-	top: 0;
-	height: 100%;
-	border-right: #D5D5D6 solid 1px;
-	.scal-x-line;
-}
-.thin-xl-line:before{ 
-	content: ''; 
-	position: absolute; 
-	left: 0; 
-	bottom: 0; 
-	top: 0; 
-	border-right: #D5D5D6 solid 1px;
-	.scal-x-line;
-}
-/***************分割线 end**************/
-
-.clear_bg{
-	appearance: none; 
-	-webkit-appearance: none; 
-	-moz-appearance: none; 
-	-moz-appearance: none; 
-	-webkit-tap-highlight-color: transparent; 
-	-moz-tap-highlight-color: transparent; 
-	-webkit-transition: background-color; 
-	transition: background-color; 
-	-moz-transition: background-color;
 }

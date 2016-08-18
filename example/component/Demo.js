@@ -1,10 +1,15 @@
 import React, {Component} from 'react'
 
+import watermark from 'common/utils/WaterMark'
+
+let mark = watermark("方驰皓方驰皓方驰皓方驰皓方驰皓方驰皓方驰皓方驰皓方驰皓方驰皓方驰皓方驰皓方驰皓方驰皓方驰皓", "red");
+
 
 export default class Demo extends Component {
 	componentDidMount() {
 		// this._testSymbol()
-		this._demo()
+		// this._demo()
+		let {demo} = this.refs;
 	}
 	_demo() {
 		let a = [1, 2, 3, 4];
@@ -89,41 +94,7 @@ export default class Demo extends Component {
 	}
 	render() {
 		return (
-			<div>
-				<p>clientHeight: {document.documentElement.clientHeight}</p>
-				<p>offsetHeight: {document.documentElement.offsetHeight}</p>
-				<p>screenHeight: {window.screen.height}</p>
-				<p>{navigator.userAgent}</p>
-				<table>
-					<tbody>
-						<tr>
-							<td>10</td>
-							<td>100</td>
-							<td>1000</td>
-							<td>10000</td>
-							<td>100000</td>
-							<td>1000000</td>
-							<td>10000000</td>
-							<td>100000000</td>
-							<td>10</td>
-							<td>100</td>
-							<td>1000</td>
-							<td>10000</td>
-							<td>100000</td>
-							<td>1000000</td>
-							<td>10000000</td>
-							<td>100000000</td>
-							<td>10</td>
-							<td>100</td>
-							<td>1000</td>
-							<td>10000</td>
-							<td>100000</td>
-							<td>1000000</td>
-							<td>10000000</td>
-							<td>100000000</td>
-						</tr>
-					</tbody>
-				</table>
+			<div ref="demo" style={{position: 'absolute', left: 0, top: 0, width: "100%", height: "100%", backgroundImage: "url("+mark+")", backgroundPosition: "50% 50%"}}>
 			</div>
 		)
 	}

@@ -49,6 +49,7 @@ class ScrollTable extends Component {
 	// 渲染完成后校准高宽
 	componentDidMount() {
 		let {headT, headC, conT, conC} = this.refs;
+		let {children} = this.props;
 
 		let top_height = 0, con_height = 0, con_width = 0, 
 			con_heights = [], con_widths = [];
@@ -68,6 +69,7 @@ class ScrollTable extends Component {
 		}
 
 		for(let i = 0; i < conC_tds.length; i++) {
+			let col_props = children[i].props;
 			let temp = Math.max(conC_tds[i].offsetWidth, headC_tds[i].offsetWidth);
 			con_widths.push(temp);
 			con_width += temp;
@@ -180,9 +182,6 @@ class ScrollTable extends Component {
 				} else {
 					this._setTransition("transform 0.2s ease-out 0s");
 				}
-
-				this.transformY = this.endY;
-				this._transformY(this.endY);
 			} else {
 				let {con_width} = this.state;
 				let {fixedWidth} = this.props
@@ -200,10 +199,14 @@ class ScrollTable extends Component {
 				} else {
 					this._setTransition("transform 0.2s ease-out 0s");
 				}
-
-				this.transformX = this.endX;
-				this._transformX(this.endX);
 			}
+		}
+		if(this.vertical == 1) {
+			this.transformY = this.endY;
+			this._transformY(this.endY);
+		} else {
+			this.transformX = this.endX;
+			this._transformX(this.endX);
 		}
 	}
 
@@ -243,16 +246,28 @@ class ScrollTable extends Component {
 	// headT
 	_renderHeadTh(col, i) {
 		let {autoWidth, defaultWidth} = this.props;
-		let {title, value, width, children} = col.props;
+		let {title, value, width, children, colspan, colName} = col.props;
 		let {top_height, con_widths} = this.state;
 		let cls = "column";
+		let cols_width = con_widths[i];
+		if(colspan && colspan > 1) {
+			for(let j = 1; j < colspan; j++) {
+				cols_width += con_widths[i + j];
+			}
+		}
 		if(autoWidth) {
 			return (
-				<th key={i} className={cls} style={{height: top_height, width: con_widths[i]}}>{children ? children : title}</th>
+				<th key={i} className={cls} style={{height: top_height, width: con_widths[i]}}>
+					{colName ? <p className="cols" style={{width: cols_width}}>{colName}</p> : null}
+					{children ? children : title}
+				</th>
 			)
 		} else {
 			return (
-				<th key={i} className={cls} style={{height: top_height, width: width ? width : defaultWidth}}>{children ? children : title}</th>
+				<th key={i} className={cls} style={{height: top_height, width: width ? width : defaultWidth}}>
+					{colName ? <p className="cols" style={{width: cols_width}}>{colName}</p> : null}
+					{children ? children : title}
+				</th>
 			)
 		}
 	}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import Authority from "../../common/authority/Authority"
+import Authority from "common/authority/Authority"
 
 export default class Example extends Component {
 	render() {
