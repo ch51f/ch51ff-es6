@@ -36,9 +36,11 @@ var devConfig = {
 	},
 
 	resolve: {
+		extensions: ['', '.js', '.jsx', '.less', '.css'],
 		alias: {
 			'common': path.join(__dirname, 'common') 
-		} 
+		},
+		externals: []
 	},
 
 	plugins: [
