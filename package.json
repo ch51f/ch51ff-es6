@@ -1,7 +1,7 @@
 {
   "name": "ch51ff-es6",
   "version": "0.0.1",
-  "description": "fangchihao's es6 env",
+  "description": "fangchihao's development environment",
   "private": true,
   "author": {
     "name": "Fang Chi Hao",
@@ -11,14 +11,16 @@
   "scripts": {
     "build": "babel src -d lib",
     "build-map": "babel src -d lib -s",
+    "dev": "cross-env BABEL_ENV=cjs node dev.js",
     "production": "webpack --config webpack.production.config.js -p",
-    "start": "cross-env BABEL_ENV=cjs NODE_ENV=dev node server.js",
-    "sp": "cross-env BABEL_ENV=cjs NODE_ENV=production node server.js",
-    "test": "cross-env BABEL_ENV=cjs NODE_ENV=dev node test.server.js",
-    "test-es6": "babel-node src/utils.js"
+    "start": "node server.js",
+    "run-es": "babel-node src/utils.js"
   },
   "dependencies": {
-    "babel-polyfill": "^6.9.1"
+    "babel-polyfill": "^6.9.1",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
@@ -31,7 +33,6 @@
     "classnames": "^2.2.5",
     "cross-env": "^1.0.8",
     "css-loader": "^0.23.1",
-    "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",

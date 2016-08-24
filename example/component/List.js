@@ -10,7 +10,7 @@ for(let i = 0; i < 20; i++) {
 	temp.name = "列表项";
 	if(i % 2 == 0)
 		temp.sub = "副标题";
-	temp.url = 'list';
+	temp.url = 'example';
 	list.push(temp);
 }
 
