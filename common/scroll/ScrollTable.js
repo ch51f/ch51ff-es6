@@ -200,6 +200,15 @@ class ScrollTable extends Component {
 					this._setTransition("transform 0.2s ease-out 0s");
 				}
 			}
+		} else {
+			if(this.vertical == 1) {
+				let {top_height} = this.state;
+				let {height} = this.props;
+				height = parseFloat(height) - top_height;
+				let {con} = this.refs;
+				if(con.offsetHeight < height)
+					return false
+			}
 		}
 		if(this.vertical == 1) {
 			this.transformY = this.endY;

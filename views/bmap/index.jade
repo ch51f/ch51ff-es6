@@ -1,0 +1,31 @@
+extends ./layout.jade
+
+block content
+	#allmap 正在加载百度地图
+	.control-panel
+		#control
+			span.item.active(data-key="drag") 可以拖拽
+			span.item(data-key="wheel") 滚轮缩放
+			span.item.active(data-key="double") 双击放大
+			span.item(data-key="keyboard") 键盘操作(需先拖拽)
+			span.item(data-key="inertial") 惯性拖拽
+			span.item(data-key="continuous") 连续缩放
+			span.item.active(data-key="pinch") 双指缩放(手机)
+			span.item.active(data-key="resize") 自适应
+		#exc
+			span.btn.zoom zoom
+			span.btn.bounds 可视区域
+			span.btn.center 地图中心
+			span.btn.type 获取类型
+			span.btn.size 获取size
+			span.btn.viewport 获取viewport
+			span.btn.distance 获取左下右上两点距离
+		#zoom
+			input.min-zoom(placeholder="3")
+			span.connect-zoom -
+			input.max-zoom(placeholder="19")
+			span.btn-zoom 设置zoom范围
+
+
+block js
+	script(type="text/javascript" src="/js/bmap/index.js")

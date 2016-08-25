@@ -1,0 +1,24 @@
+doctype html
+html(lang="zh-cn")
+	head
+		meta(name="format-detection" content="telephone=no")
+		meta(name="msapplication-tap-highlight" content="no")
+		meta(name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width")
+		meta(name="apple-mobile-web-app-capable" content="yes")
+		meta(name="apple-mobile-web-app-status-bar-style" content="black")
+		title= title
+		link(rel="stylesheet", href="/css/base.css")
+		link(rel="stylesheet", href="/css/bmap.css")
+	body
+		.bmap-wrap.clearfix
+			.bmap-left
+				.bmap-list#menu
+					a.item.m-index(href="/bmap") 调用地图
+					a.item.m-mapfunc(href="/bmap/mapfunc") 地图状态
+					a.item.m-control(href="/bmap/control") 地图控件
+			.bmap-right
+				block content
+		script(type="text/javascript" src="/lib/jquery/jquery-1.12.1.min.js")
+		script(type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mSmA1dw3yM6cbpumKvDSTnn3eDBoG2i5")
+		script(type="text/javascript" src="/js/bmap/base.js")
+		block js

@@ -6,8 +6,8 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var productionConfig = [{
     entry: path.resolve(__dirname, 'example/main'),
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, './public'),
+        filename: 'example.js',
+        path: path.resolve(__dirname, './public/webpack'),
         publicPath: "/"
     },
     module: {
@@ -43,7 +43,7 @@ var productionConfig = [{
                 warnings: false 
             } 
         }),
-        new ExtractTextPlugin("bundle.css"),
+        new ExtractTextPlugin("example.css"),
         new webpack.BannerPlugin('This file is created by ch51ff')
     ]
 }];

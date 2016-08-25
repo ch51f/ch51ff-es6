@@ -1,0 +1,23 @@
+extends ./layout.jade
+
+block content
+	#allmap 正在加载百度地图
+	.control-panel
+		#exc
+			span.btn.caz 设置中心zoom
+			span.btn.panto 中心移动(坐标)
+			span.btn.panby 地图中心(像素)
+			span.btn.reset reset
+			span.btn.center 设置中心
+			span.btn.city 设置城市
+			span.btn.type 设置地图类型
+			br
+			span.btn.viewport 设置地图视野
+			span.btn.zoom 设置zoom
+			span.btn.highresolution 高分辨率底图
+			span.btn.zoomin zoom in
+			span.btn.zoomout zoom out
+
+
+block js
+	script(type="text/javascript" src="/js/bmap/mapfunc.js")

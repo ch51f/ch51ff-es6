@@ -1,0 +1,89 @@
+.bmap-wrap {
+	overflow: hidden;
+	width: 100%;
+}
+
+.bmap-left {
+	border-right: 1px solid #ddd;
+	float: left;
+	height: 100%;
+	line-height: 24px;
+	padding: 10px;
+	width: 200px;
+}
+
+.bmap-right {
+	height: 100%;
+	margin-left: 200px;
+	position: relative;
+	text-align: center;
+}
+
+.bmap-list .item {
+	color: #666;
+	display: block;
+	line-height: 24px;
+	text-decoration: none;
+}
+.bmap-list .item:hover,
+.bmap-list .item.active {
+	color: #2ea7e0;
+}
+
+#allmap {
+	height: 100%;
+	width: 100%;
+}
+
+.control-panel {
+	background: #fff;
+	box-shadow: 3px 3px 3px #ddd;
+	position: absolute; left: 20px; top: 10px;
+	padding: 5px;
+	text-align: left;
+}
+.control-panel .item {
+	cursor: pointer;
+	display: inline-block;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	margin: 3px;
+	padding: 3px;
+}
+.control-panel .item.active {
+	background: #ff5a5e;
+	border-color: #ff5a5e;
+	color: #fff;
+}
+.control-panel .btn {
+	background: #fff;
+	color: #2ea7e0;
+	cursor: pointer;
+	display: inline-block;
+	border: 1px solid #2ea7e0;
+	border-radius: 3px;
+	margin: 3px;
+	padding: 3px;
+}
+
+.control-panel .min-zoom,
+.control-panel .max-zoom {
+	border: 1px solid #2ea7e0;
+	padding: 3px;
+	height: 27px;
+	vertical-align: top;
+	display: inline-block;
+	text-align: center;
+	margin: 3px;
+	width: 30px;
+}
+.control-panel .btn-zoom {
+	background: #fff;
+	color: #2ea7e0;
+	cursor: pointer;
+	display: inline-block;
+	border: 1px solid #2ea7e0;
+	border-radius: 3px;
+	margin: 3px;
+	padding: 3px;
+}

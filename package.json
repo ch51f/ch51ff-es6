@@ -12,14 +12,15 @@
     "build": "babel src -d lib",
     "build-map": "babel src -d lib -s",
     "dev": "cross-env BABEL_ENV=cjs node dev.js",
-    "production": "webpack --config webpack.production.config.js -p",
+    "less": "less public/less > public/css",
+    "p": "webpack --config webpack.production.config.js -p",
     "start": "node server.js",
     "run-es": "babel-node src/utils.js"
   },
   "dependencies": {
     "babel-polyfill": "^6.9.1",
-    "ejs": "^2.5.1",
     "express": "^4.14.0",
+    "jade": "^1.11.0",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {

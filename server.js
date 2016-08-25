@@ -1,78 +1,30 @@
-var express = require('express'),
-	path = require('path');
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
 
-var isDev = process.env.NODE_ENV !== 'production';
+// webpack + react 模块
+var react = require('./routes/react');
+
+// 百度地图模块
+var bmap = require('./routes/bmap');
+
 var app = express();
-var port = 5100;
+var port = 18080;
 
-app.locals.env = process.env.NODE_ENV || 'dev';
-app.locals.reload = true;
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
-if(isDev) {
-	var webpack = require('webpack'),
-		webpackDevMiddleware = require('webpack-dev-middleware'),
-		webpackHotMiddleware = require('webpack-hot-middleware'),
-		webpackDevConfig = require('./webpack.config.js');
-
-	var compiler = webpack(webpackDevConfig);
-
-	app.use(webpackDevMiddleware(compiler, {
-		publicPath: webpackDevConfig.output.publicPath,
-		noInfo: true,
-		stats: {
-			color: true
-		}
-	}));
-	
-	app.use(webpackHotMiddleware(compiler));
-
-	app.get("/", function(req, res) {
-		res.sendFile(path.resolve(__dirname, "index.html"))
-	});
-
-	app.get("/map", function(req, res) {
-		res.sendFile(path.resolve(__dirname, "map.html"))
-	});
-
-	app.get("/map1", function(req, res) {
-		res.sendFile(path.resolve(__dirname, "map1.html"))
-	});
-
-	app.get("/example", function(req, res) {
-		res.sendFile(path.resolve(__dirname, "example/index.html"))
-	});
-
-	app.get("/example/*", function(req, res) {
-		res.sendFile(path.resolve(__dirname, "example/index.html"))
-	});
-
-	var reload = require('reload');
-	var http = require('http');
-
-	var server = http.createServer(app);
-	reload(server, app);
-
-	server.listen(port, function() {
-		console.log("App (dev) is now running on port 5100!")
-	})
-
-} else {
-	app.use(express.static(path.join(__dirname, 'public')));
-
-	app.get("/map", function(req, res) {
-		res.sendFile(path.resolve(__dirname, "map.html"))
-	});
-
-	app.get("/example", function(req, res) {
-		res.sendFile(path.resolve(__dirname, "router/example.html"))
-	});
-
-	app.get("/example/*", function(req, res) {
-		res.sendFile(path.resolve(__dirname, "router/example.html"))
-	});
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 
-	app.listen(port, function() {
-		console.log('App (production) is now running on port 5100!');
-	})
-}
+app.get("/", function(req, res) {
+    res.sendFile(path.resolve(__dirname, "index.html"))
+});
+
+app.use("/example", react);
+app.use("/bmap", bmap);
+
+app.listen(port, function() {
+    console.log('ch51ff environment is OK!');
+})
