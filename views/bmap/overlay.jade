@@ -1,0 +1,16 @@
+extends ./layout.jade
+
+block content
+	#allmap 正在加载百度地图
+	.control-panel
+		#exc
+			span.btn.s_m 添加一个overlay
+			span.btn.r_m 移除最后添加overlay
+			span.btn.r_a 移除全部overlay
+			br
+			span.btn.g_w 获取信息窗
+			span.btn.g_o 获取覆盖物
+			span.btn.g_p 获取覆盖物容器
+
+block js
+	script(type="text/javascript" src="/js/bmap/overlay.js")

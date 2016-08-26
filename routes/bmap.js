@@ -7,6 +7,12 @@ router.get("/", function(req, res, next) {
 	});
 })
 
+router.get("/base", function(req, res, next) {
+	res.render('bmap/base', {
+		title : '百度地图基础类'
+	});
+})
+
 router.get("/control", function(req, res, next) {
 	res.render('bmap/control', {
 		title : '百度地图控件'
@@ -16,6 +22,24 @@ router.get("/control", function(req, res, next) {
 router.get("/mapfunc", function(req, res, next) {
 	res.render('bmap/mapfunc', {
 		title : '百度地图控件'
+	});
+})
+
+router.get("/rightmenu", function(req, res, next) {
+	res.render('bmap/rightmenu', {
+		title : '百度地图右键菜单'
+	});
+})
+
+router.get("/overlay", function(req, res, next) {
+	res.render('bmap/overlay', {
+		title : '百度地图覆盖物'
+	});
+})
+
+router.get("/marker", function(req, res, next) {
+	res.render('bmap/marker', {
+		title : '百度地图图像标注'
 	});
 })
 

@@ -43,6 +43,9 @@
 		map.zoomIn()
 	}).on('click', '.zoomout', function() {
 		map.zoomOut()
+	}).on('click', '.ct', function() {
+		var ct = map.getContainer();
+		console.log(ct);
 	})
 
 

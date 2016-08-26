@@ -1,0 +1,28 @@
+extends ./layout.jade
+
+block content
+	#allmap 正在加载百度地图
+	.control-panel
+		#exc
+			span.btn.p_s 创建一个point
+			span.btn.p_q 判断point是否相等
+			span.btn.pi_s 创建一个piexl
+			span.btn.pi_q 判断piexl是否相等
+			span.btn.s_s 创建一个size
+			span.btn.s_q 判断size是否相等
+			br
+			span.btn.b_s1 通过区域创建bounds
+			span.btn.b_s2 通过point创建bounds
+			span.btn.b_q 判断bounds是否相等
+			span.btn.b_c_p 判断point是否在bounds内
+			span.btn.b_c_b 判断bounds是否在bounds内
+			br
+			span.btn.b_i 判断bounds交集
+			span.btn.b_e bounds包括point
+			span.btn.b_ie 判断bounds是否为空
+			span.btn.b_sw 西南角
+			span.btn.b_ns 东北角
+			span.btn.b_ts 跨度
+
+block js
+	script(type="text/javascript" src="/js/bmap/m_base.js")
