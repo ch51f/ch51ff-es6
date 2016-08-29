@@ -13,6 +13,18 @@ router.get("/base", function(req, res, next) {
 	});
 })
 
+router.get("/to", function(req, res, next) {
+	res.render('bmap/to', {
+		title : '百度地图坐标转换'
+	});
+})
+
+router.get("/event", function(req, res, next) {
+	res.render('bmap/event', {
+		title : '百度地图事件'
+	});
+})
+
 router.get("/control", function(req, res, next) {
 	res.render('bmap/control', {
 		title : '百度地图控件'

@@ -1,0 +1,11 @@
+extends ./layout.jade
+
+block content
+	#allmap 正在加载百度地图
+	.control-panel
+		#exc
+			span.btn.pi_t_po 像素转经纬度
+			span.btn.po_t_pi 经纬度转像素
+
+block js
+	script(type="text/javascript" src="/js/bmap/to.js")
