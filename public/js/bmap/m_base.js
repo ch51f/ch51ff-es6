@@ -66,14 +66,113 @@
 		} else {
 			alert("false")
 		}
+	}).on("click", '.b_s1', function() {
+		bounds = new BMap.Bounds(50, 50, 500, 500);
+		console.log(bounds);
+	}).on("click", '.b_s2', function() {
+		bounds_sm = new BMap.Bounds(new BMap.Point(102.704042, 25.000935), new BMap.Point(102.710142, 25.004845));
+		console.log(bounds_sm);
+	}).on("click", '.b_q', function() {
+		if(!bounds_sm) {
+			alert("先创建bounds");
+			return false;
+		}
+		if(!bounds) {
+			alert("先创建另一个bounds");
+			return false;
+		}
+		var equals = bounds_sm.equals(bounds);
+		console.log(equals);
+		if(equals) {
+			alert("true")
+		} else {
+			alert("false")
+		}
+	}).on("click", '.b_c_p', function() {
+		if(!bounds_sm) {
+			alert("先创建bounds");
+			return false;
+		}
+		var equals = bounds_sm.containsPoint(new BMap.Point(102.705042, 25.000935));
+		console.log(equals);
+		if(equals) {
+			alert("true")
+		} else {
+			alert("false")
+		}
+	}).on("click", '.b_c_b', function() {
+		if(!bounds_sm) {
+			alert("先创建bounds");
+			return false;
+		}
+		if(!bounds) {
+			alert("先创建另一个bounds");
+			return false;
+		}
+		var equals = bounds_sm.containsBounds(bounds);
+		console.log(equals);
+		if(equals) {
+			alert("true")
+		} else {
+			alert("false")
+		}
+	}).on("click", '.b_i', function() {
+		if(!bounds_sm) {
+			alert("先创建bounds");
+			return false;
+		}
+		if(!bounds) {
+			alert("先创建另一个bounds");
+			return false;
+		}
+		var intersects = bounds_sm.intersects(bounds);
+		console.log(intersects);
+	}).on("click", '.b_e', function() {
+		if(!bounds_sm) {
+			alert("先创建bounds");
+			return false;
+		}
+		bounds_sm.extend(new BMap.Point(102.705042, 25.000935));
+		console.log(bounds_sm);
+	}).on("click", '.b_c', function() {
+		if(!bounds_sm) {
+			alert("先创建bounds");
+			return false;
+		}
+		var center = bounds_sm.getCenter();
+		console.log(center);
+	}).on("click", '.b_ie', function() {
+		if(!bounds_sm) {
+			alert("先创建bounds");
+			return false;
+		}
+		var empty = bounds_sm.isEmpty();
+		console.log(empty);
+		if(empty) {
+			alert("true")
+		} else {
+			alert("false")
+		}
+	}).on("click", '.b_sw', function() {
+		if(!bounds_sm) {
+			alert("先创建bounds");
+			return false;
+		}
+		var sw = bounds_sm.getSouthWest();
+		console.log(sw);
+	}).on("click", '.b_ns', function() {
+		if(!bounds_sm) {
+			alert("先创建bounds");
+			return false;
+		}
+		var ns = bounds_sm.getNorthEast();
+		console.log(ns);
+	}).on("click", '.b_ts', function() {
+		if(!bounds_sm) {
+			alert("先创建bounds");
+			return false;
+		}
+		var span = bounds_sm.toSpan();
+		console.log(span);
 	})
-
-	// map.pointToPixel(new BMap.Point(102.704042, 25.000935))
-	// 0, 955
-	// map.pointToPixel(new BMap.Point(102.710142, 25.004845))
-	// 1358, 0
-	// De : 25.004845 
-	// Ee : 102.710142 
-	// Ie : 25.000935 
-	// Je : 102.704042
 })(jQuery)
