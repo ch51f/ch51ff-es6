@@ -2,5 +2,44 @@ extends ./layout.jade
 
 block content
 	#allmap 正在加载百度地图
+	.control-panel
+		#control
+			span.item.active(data-key="click") 单击
+			span.item(data-key="dblclick") 双击
+			span.item(data-key="rightclick") 鼠标右键
+			span.item(data-key="maptypechange") 地图类型切换
+
+			span.item(data-key="mousemove") 鼠标移动
+			span.item(data-key="mouseover") 鼠标进入
+			span.item(data-key="mouseout") 鼠标离开
+			
+			br
+
+			span.item(data-key="movestart") 地图移动开始
+			span.item(data-key="moving") 地图移动
+			span.item(data-key="moveend") 地图移动结束
+
+			span.item(data-key="zoomstart") 地图缩放开始
+			span.item(data-key="zoomend") 地图缩放结束
+
+			br
+
+			span.item(data-key="addoverlay") addOverlay
+			span.item(data-key="removeoverlay") removeOverlay
+			span.item(data-key="clearoverlays") clearOverlays
+
+			span.item(data-key="addcontrol") addControl
+			span.item(data-key="removecontrol") removeControl
+
+			br
+
+			span.item(data-key="dragstart") dragstart
+			span.item(data-key="dragging") dragging
+			span.item(data-key="dragend") dragend
+
+			span.item(data-key="touchstart") touchstart
+			span.item(data-key="touchmove") touchmove
+			span.item(data-key="touchend") touchend
+
 block js
 	script(type="text/javascript" src="/js/bmap/event.js")
