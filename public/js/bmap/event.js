@@ -94,7 +94,6 @@
 		console.log(e)
 		console.log(e.type)
 		console.log(e.target)
-		alert("moving")
 	}
 
 	var func_moveend = function(e) {
@@ -153,10 +152,6 @@
 		alert("clearoverlays")
 	}
 
-
-
-
-
 	var func_dragstart = function(e) {
 		console.log(e)
 		console.log(e.type)
@@ -172,7 +167,6 @@
 		console.log(e.target)
 		console.log(e.pixel)
 		console.log(e.point)
-		alert("dragging")
 	}
 
 	var func_dragend = function(e) {
@@ -193,13 +187,12 @@
 		alert("touchstart")
 	}
 
-	var func_touching = function(e) {
+	var func_touchmove = function(e) {
 		console.log(e)
 		console.log(e.type)
 		console.log(e.target)
 		console.log(e.pixel)
 		console.log(e.point)
-		alert("touching")
 	}
 
 	var func_touchend = function(e) {
@@ -209,6 +202,78 @@
 		console.log(e.pixel)
 		console.log(e.point)
 		alert("touchend")
+	}
+
+	var func_longpress = function(e) {
+		console.log(e)
+		console.log(e.type)
+		console.log(e.target)
+		console.log(e.pixel)
+		console.log(e.point)
+		alert("longpress")
+	}
+
+	var func_addtilelayer = function(e) {
+		console.log(e)
+		console.log(e.type)
+		console.log(e.target)
+		alert("addtilelayer")
+	}
+
+	var func_removetilelayer = function(e) {
+		console.log(e)
+		console.log(e.type)
+		console.log(e.target)
+		alert("removetilelayer")
+	}
+
+	var func_load = function(e) {
+		console.log(e)
+		console.log(e.type)
+		console.log(e.target)
+		console.log(e.pixel)
+		console.log(e.point)
+		console.log(e.zoom)
+		alert("load")
+	}
+
+	var func_resize = function(e) {
+		console.log(e)
+		console.log(e.type)
+		console.log(e.target)
+		console.log(e.size)
+		alert("resize")
+	}
+
+	var func_hotspotclick = function(e) {
+		console.log(e)
+		console.log(e.type)
+		console.log(e.target)
+		console.log(e.spots)
+		alert("hotspotclick")
+	}
+
+	var func_hotspotover = function(e) {
+		console.log(e)
+		console.log(e.type)
+		console.log(e.target)
+		console.log(e.spots)
+		alert("hotspotover")
+	}
+
+	var func_hotspotout = function(e) {
+		console.log(e)
+		console.log(e.type)
+		console.log(e.target)
+		console.log(e.spots)
+		alert("hotspotout")
+	}
+
+	var func_tilesloaded = function(e) {
+		console.log(e)
+		console.log(e.type)
+		console.log(e.target)
+		alert("tilesloaded")
 	}
 
 	var addEvent = function(type, func) {
@@ -282,6 +347,58 @@
 				break;
 			case 'removecontrol':
 				flag ? removeEvent("removecontrol", func_removecontrol) : addEvent("removecontrol", func_removecontrol);
+				break;
+
+			case 'dragstart':
+				flag ? removeEvent("dragstart", func_dragstart) : addEvent("dragstart", func_dragstart);
+				break;
+			case 'dragging':
+				flag ? removeEvent("dragging", func_dragging) : addEvent("dragging", func_dragging);
+				break;
+			case 'dragend':
+				flag ? removeEvent("dragend", func_dragend) : addEvent("dragend", func_dragend);
+				break;
+
+			case 'touchstart':
+				flag ? removeEvent("touchstart", func_touchstart) : addEvent("touchstart", func_touchstart);
+				break;
+			case 'touchmove':
+				flag ? removeEvent("touchmove", func_touchmove) : addEvent("touchmove", func_touchmove);
+				break;
+			case 'touchend':
+				flag ? removeEvent("touchend", func_touchend) : addEvent("moveend", func_touchend);
+				break;
+
+			case 'longpress':
+				flag ? removeEvent("longpress", func_longpress) : addEvent("longpress", func_longpress);
+				break;
+
+			case 'addtilelayer':
+				flag ? removeEvent("addtilelayer", func_addtilelayer) : addEvent("addtilelayer", func_addtilelayer);
+				break;
+			case 'removetilelayer':
+				flag ? removeEvent("removetilelayer", func_removetilelayer) : addEvent("removetilelayer", func_removetilelayer);
+				break;
+
+			case 'load':
+				flag ? removeEvent("load", func_load) : addEvent("load", func_load);
+				break;
+			case 'resize':
+				flag ? removeEvent("resize", func_resize) : addEvent("resize", func_resize);
+				break;
+
+			case 'hotspotclick':
+				flag ? removeEvent("hotspotclick", func_hotspotclick) : addEvent("hotspotclick", func_hotspotclick);
+				break;
+			case 'hotspotover':
+				flag ? removeEvent("hotspotover", func_hotspotover) : addEvent("hotspotover", func_hotspotover);
+				break;
+			case 'hotspotout':
+				flag ? removeEvent("hotspotout", func_hotspotout) : addEvent("hotspotout", func_hotspotout);
+				break;
+
+			case 'tilesloaded':
+				flag ? removeEvent("tilesloaded", func_tilesloaded) : addEvent("tilesloaded", func_tilesloaded);
 				break;
 
 			default:
