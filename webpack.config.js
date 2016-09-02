@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var publicPath = 'http://localhost:5100/';
+var publicPath = 'http://fch.net.fangstar.net:18080/';
 var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';	
 
 var devConfig = {
