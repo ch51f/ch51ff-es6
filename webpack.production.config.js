@@ -4,7 +4,7 @@ var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var productionConfig = [{
-    entry: path.resolve(__dirname, 'example/main'),
+    entry: ['babel-polyfill', path.resolve(__dirname, 'example/main')],
     output: {
         filename: 'example.js',
         path: path.resolve(__dirname, './public/webpack'),
