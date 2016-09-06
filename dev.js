@@ -28,14 +28,6 @@ app.get("/", function(req, res) {
 	res.sendFile(path.resolve(__dirname, "index.html"))
 });
 
-app.get("/map", function(req, res) {
-	res.sendFile(path.resolve(__dirname, "map.html"))
-});
-
-app.get("/map1", function(req, res) {
-	res.sendFile(path.resolve(__dirname, "map1.html"))
-});
-
 app.get("/example", function(req, res) {
 	res.sendFile(path.resolve(__dirname, "example/index.html"))
 });

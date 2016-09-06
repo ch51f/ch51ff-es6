@@ -3,6 +3,10 @@ let Store = {
 		id: "A",
 		name: "A",
 		data: [{
+			id: "ActionSheet",
+			name: "ActionSheet",
+			url: "example/actionsheet",
+		}, {
 			id: "Alert",
 			name: "Alert",
 			url: "example/alert",

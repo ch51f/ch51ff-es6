@@ -1,0 +1,30 @@
+.actionsheet {
+	.txt-c;
+	background: #fff;
+	position: fixed; bottom: 0; left: 0;
+	width: 100%;
+	z-index: 9100;
+	.content {
+		.action {
+			border-bottom: 1px solid @color-border;
+			height: @height-default;
+			line-height: @height-default - 1;
+		}
+		.action:last-child {
+			border-bottom: 1px solid transparent;
+		}
+		border-bottom: 5px solid @color-border;
+		width: 100%;
+	}
+	.foot {
+		width: 100%;
+		.cancel {
+			background: #fff;
+			border: 0 none;
+			display: block;
+			height: @height-default;
+			line-height: @height-default;
+			width: 100%;
+		}
+	}
+}

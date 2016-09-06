@@ -1,7 +1,7 @@
 import React from 'react'
 import {Router, Route, IndexRoute, browserHistory, hashHistory} from 'react-router'
 
-import {App, Home, List, DoubleList, Mask, Loading, Svg, Authority, Demo, ScrollTable, Button, ScrollPanel, Alert, Message, WaterMark} from './component'
+import {App, Home, List, DoubleList, Mask, Loading, Svg, Authority, Demo, ScrollTable, Button, ScrollPanel, Alert, Message, WaterMark, ActionSheet} from './component'
 
 export default (
 	<Router history={browserHistory}>
@@ -20,6 +20,7 @@ export default (
 			<Route path="alert" component={Alert} />
 			<Route path="message" component={Message} />
 			<Route path="watermark" component={WaterMark} />
+			<Route path="actionsheet" component={ActionSheet} />
 		</Route>
 	</Router>
 )
