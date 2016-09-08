@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import {Addition, ArrowRight, Card, Contact, Deal, Edit, Grow, ListIcon, Location, Pen, Phone, Point, Shield, User, Work, Close} from 'common/svg'
+import {Addition, ArrowRight, Card, Contact, Deal, Edit, Grow, ListIcon, Location, Pen, Phone, Point, Shield, User, Work, Close, MyLocation} from 'common/svg'
 
 
 export default class Example extends Component {
@@ -55,6 +55,9 @@ export default class Example extends Component {
 				</span>
 				<span className="item">
 					<Close size={size} />
+				</span>
+				<span className="item">
+					<MyLocation size={size} />
 				</span>
 			</div>
 		)
