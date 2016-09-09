@@ -1,0 +1,106 @@
+extends ./layout.jade
+
+block content
+	#moment 
+		h2 MomentJs
+		p 用法
+		div
+			pre
+				code moment().format()
+		h3 当前世界
+		div
+			pre
+				code moment()
+		h3 字符串
+		div
+			pre
+				code moment(string)
+		h3 合法性校验
+		div
+			pre
+				code moment().isValid()
+		h2 取值/赋值
+		h3 毫秒
+		div
+			pre
+				code. 
+					moment().millisecond(Number)
+					moment().millisecond();
+		h3 秒
+		div
+			pre
+				code. 
+					moment().second(Number)
+					moment().second();
+		h3 分钟
+		div
+			pre
+				code. 
+					moment().minute(Number)
+					moment().minute();
+		h3 小时
+		div
+			pre
+				code. 
+					moment().hour(Number)
+					moment().hour();
+		h3 日
+		div
+			pre
+				code. 
+					moment().date(Number)
+					moment().date();
+		h3 星期
+		div
+			pre
+				code. 
+					moment().day(Number)
+					moment().day();
+		h3 一年第几天
+		div
+			pre
+				code. 
+					moment().dayOfYear(Number)
+					moment().dayOfYear();
+		h3 一年第几周
+		div
+			pre
+				code. 
+					moment().week(Number)
+					moment().week();
+		h3 月
+		div
+			pre
+				code. 
+					moment().month(Number|String)
+					moment().month();
+		h3 季度
+		div
+			pre
+				code. 
+					moment().quarter(Number)
+					moment().quarter();
+		h3 年
+		div
+			pre
+				code. 
+					moment().year(Number)
+					moment().year();
+		h3 取值
+		div
+			pre
+				code.
+		h3 赋值
+		div
+			pre
+				code.
+		h3 最大值
+		div
+			pre
+				code.
+		h3 最小值
+		div
+			pre
+				code.
+block js
+	script(type="text/javascript" src="/js/moment/base.js")
