@@ -90,17 +90,23 @@ block content
 		div
 			pre
 				code.
+					moment().get('year');
 		h3 赋值
 		div
 			pre
 				code.
+					moment().set(String, Int); 
+					moment().set(Object(String, Int));
+					moment().set('year', 2013);
 		h3 最大值
 		div
 			pre
 				code.
+					moment.max(Moment[,Moment...]);
 		h3 最小值
 		div
 			pre
 				code.
+					moment.min(Moment[,Moment...]);
 block js
 	script(type="text/javascript" src="/js/moment/base.js")
