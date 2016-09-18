@@ -25,6 +25,10 @@ app.get("/", function(req, res) {
     res.sendFile(path.resolve(__dirname, "index.html"))
 });
 
+app.get("/map", function(req, res) {
+    res.sendFile(path.resolve(__dirname, "map.html"))
+});
+
 app.use("/example", react);
 app.use("/bmap", bmap);
 app.use("/moment", moment);
