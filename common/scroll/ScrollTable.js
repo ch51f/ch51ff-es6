@@ -6,6 +6,7 @@
 import React, {Component, PropTypes} from 'react'
 
 import ClassCore from '../utils/ClassCore'
+import {quickSortObj} from '../utils/quickSort'
 
 class ScrollTable extends Component {
 	constructor(props){
@@ -25,7 +26,8 @@ class ScrollTable extends Component {
 			con_height: 0,			//内容区高度
 			con_width: 0,			//内容区宽度
 			con_heights: [],		//内容区每行高度
-			con_widths: []			//内容区每列宽度
+			con_widths: [],			//内容区每列宽度
+			data: [],
 		}
 	}
 	
@@ -34,6 +36,7 @@ class ScrollTable extends Component {
 		let self = this;
 		let {children, data, autoWidth, defaultWidth} = this.props;
 
+		this.setState({data: data})
 		if(!autoWidth) {
 			let con_width = 0;
 
@@ -75,6 +78,7 @@ class ScrollTable extends Component {
 
 		this.setState({top_height: top_height, con_height: con_height, con_width: con_width, con_heights: con_heights, con_widths: con_widths});
 	}
+
 
 	// touchstart
 	// 获取 touchstart X,Y值，记录touchstarttime, 删除delay Class, 重置vertical
@@ -247,12 +251,12 @@ class ScrollTable extends Component {
 
 	// headT
 	_renderHeadTh(col, i) {
-		let {autoWidth, defaultWidth, sortHandle} = this.props;
+		let {autoWidth, defaultWidth, sort} = this.props;
 		let {title, value, width, children, colspan, colName} = col.props;
 		let {top_height, con_widths} = this.state;
 		let cls = "column";
 		let cols_width = con_widths[i];
-		let sort = typeof(sortHandle) === 'function';
+		let sort_flag = sort;
 		if(colspan && colspan > 1) {
 			for(let j = 1; j < colspan; j++) {
 				cols_width += con_widths[i + j];
@@ -260,14 +264,14 @@ class ScrollTable extends Component {
 		}
 		if(autoWidth) {
 			return (
-				<th key={i} className={cls} style={{height: top_height, width: con_widths[i]}} onClick={sort ? this._sort.bind(this, value, i) : null}>
+				<th key={i} className={cls} style={{height: top_height, width: con_widths[i]}} onClick={sort_flag ? this._sort.bind(this, value, i) : null}>
 					{colName ? <p className="cols" style={{width: cols_width}}>{colName}</p> : null}
 					{children ? children : title}
 				</th>
 			)
 		} else {
 			return (
-				<th key={i} className={cls} style={{height: top_height, width: width ? width : defaultWidth}} onClick={sort ? this._sort.bind(this, value, i) : null}>
+				<th key={i} className={cls} style={{height: top_height, width: width ? width : defaultWidth}} onClick={sort_flag ? this._sort.bind(this, value, i) : null}>
 					{colName ? <p className="cols" style={{width: cols_width}}>{colName}</p> : null}
 					{children ? children : title}
 				</th>
@@ -276,13 +280,13 @@ class ScrollTable extends Component {
 	}
 
 	_sort(key, index) {
-		let {sortHandle} = this.props;
+		// let {sortHandle} = this.props;
 		const {headC, conC} = this.refs;
+		let {data, con_heights} = this.state
 		let conC_trs = conC.getElementsByTagName("tr"),
 			headC_trs = headC.getElementsByTagName("tr"),
 			headC_tds = headC_trs[0].getElementsByTagName("th");
 		if(ClassCore.hasClass(headC_tds[index], 'active')) return false;
-		console.log('sort')
 		for(let i = 0; i < headC_tds.length; i++) {
 			if(index == i) {
 				ClassCore.addClass(headC_tds[i], 'active');
@@ -300,7 +304,14 @@ class ScrollTable extends Component {
 				}
 			}
 		}
-		sortHandle(key, index)
+		for(let i = 0; i < con_heights.length; i++) {
+			data[i].height = con_heights[i];
+		}
+		data = quickSortObj(data, key);
+		for(let i = 0; i < con_heights.length; i++) {
+			con_heights[i] = data[i].height;
+		}
+		this.setState({data: data, con_heights: con_heights});
 	}
 
 	// conT
@@ -366,8 +377,8 @@ class ScrollTable extends Component {
 	}
 
 	render() {
-		let {title, children, data, fixedWidth, height, autoWidth} = this.props;
-		let {top_height, con_height, con_width} = this.state;
+		let {title, children, fixedWidth, height, autoWidth} = this.props;
+		let {top_height, con_height, con_width, data} = this.state;
 		height = parseFloat(height) - top_height;
 		let headTStyle = {
 			width: fixedWidth

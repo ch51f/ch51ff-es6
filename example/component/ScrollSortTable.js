@@ -19,6 +19,9 @@ export default class Example extends Component {
 		for(let i = 1; i < 11; i++) {
 			let row = {};
 			row.name = "row_" + i;
+			if(i == 10) {
+				row.name = "我是个很长的名字呵呵呵"
+			}
 			row.col_1 = Math.round(Math.random()*9+1);
 			row.col_2 = Math.round(Math.random()*9+1);
 			row.col_3 = Math.round(Math.random()*9+1);
@@ -32,9 +35,9 @@ export default class Example extends Component {
 		return data;
 	}
 	_sortHandle(key, i) {
-		let data = quickSortObj(this.state.data, key);
+		// let data = quickSortObj(this.state.data, key);
 
-		this.setState({data: data});
+		// this.setState({data: data});
 		// console.log(key)
 	}
 	render() {
@@ -42,7 +45,7 @@ export default class Example extends Component {
 		let height = document.documentElement.offsetHeight;
 		return (
 			<div>
-				<ScrollTable title="测试排序" values={["name"]} data={data} fixedWidth="80" height={height} autoWidth={true} defaultWidth={100} sortHandle={this._sortHandle.bind(this)} >
+				<ScrollTable title="测试排序" values={["name"]} data={data} fixedWidth="80" height={height} autoWidth={true} defaultWidth={100} sort={true} sortHandle={this._sortHandle.bind(this)} >
 					<Column title="列1" value="col_1"/>
 					<Column title="列2" value="col_2"/>
 					<Column title="列3" value="col_3"/>

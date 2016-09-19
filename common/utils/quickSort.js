@@ -22,7 +22,7 @@ const quickSortObj = function(arr, key) {
 	let left = [];
 	let right = [];
 	for(let i = 0; i < arr.length; i++) {
-		if(arr[i][key] < pivot[key]) {
+		if(arr[i][key] > pivot[key]) {
 			left.push(arr[i]);
 		} else {
 			right.push(arr[i]);
