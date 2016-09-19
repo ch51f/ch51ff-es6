@@ -49,7 +49,6 @@ class ScrollTable extends Component {
 	// 渲染完成后校准高宽
 	componentDidMount() {
 		let {headT, headC, conT, conC} = this.refs;
-		let {children} = this.props;
 
 		let top_height = 0, con_height = 0, con_width = 0, 
 			con_heights = [], con_widths = [];
@@ -69,7 +68,6 @@ class ScrollTable extends Component {
 		}
 
 		for(let i = 0; i < conC_tds.length; i++) {
-			let col_props = children[i].props;
 			let temp = Math.max(conC_tds[i].offsetWidth, headC_tds[i].offsetWidth);
 			con_widths.push(temp);
 			con_width += temp;
@@ -86,15 +84,13 @@ class ScrollTable extends Component {
 		this.startX = touch.pageX;
 		this.startY = touch.pageY;
 
+
 		this.touchStartTime = new Date();
 
-		// const {headC, conT, conC} = this.refs;
-
-		// headC.style.transition = "";
-		// headC.style.transition = "";
-
 		this._setTransition("");
+		
 
+		// const {headC, conT, conC} = this.refs;
 		// ClassCore.removeClass(headC, 'scroll-delay');
 		// ClassCore.removeClass(conT, 'scroll-delay');
 		// ClassCore.removeClass(conC, 'scroll-delay');
@@ -159,12 +155,10 @@ class ScrollTable extends Component {
 		// ClassCore.addClass(conT, 'scroll-delay');
 		// ClassCore.addClass(conC, 'scroll-delay');
 
-
 		if(timeDif < 300 && this.vertical != 0) {
 			if(this.vertical == 1) {
 				let {con_height, top_height} = this.state;
 				let {height} = this.props;
-
 				height = parseFloat(height) - top_height;
 				let {con} = this.refs;
 				if(con.offsetHeight < height)
@@ -193,7 +187,6 @@ class ScrollTable extends Component {
 				if(this.endX < -con_width + document.documentElement.offsetWidth - fixedWidth) {
 					this.endX = -con_width + document.documentElement.offsetWidth - fixedWidth
 				}
-				
 				if(Math.abs(more) > 500) {
 					this._setTransition("transform 0.5s ease-out 0s");
 				} else {
@@ -254,11 +247,12 @@ class ScrollTable extends Component {
 
 	// headT
 	_renderHeadTh(col, i) {
-		let {autoWidth, defaultWidth} = this.props;
+		let {autoWidth, defaultWidth, sortHandle} = this.props;
 		let {title, value, width, children, colspan, colName} = col.props;
 		let {top_height, con_widths} = this.state;
 		let cls = "column";
 		let cols_width = con_widths[i];
+		let sort = typeof(sortHandle) === 'function';
 		if(colspan && colspan > 1) {
 			for(let j = 1; j < colspan; j++) {
 				cols_width += con_widths[i + j];
@@ -266,19 +260,47 @@ class ScrollTable extends Component {
 		}
 		if(autoWidth) {
 			return (
-				<th key={i} className={cls} style={{height: top_height, width: con_widths[i]}}>
+				<th key={i} className={cls} style={{height: top_height, width: con_widths[i]}} onClick={sort ? this._sort.bind(this, value, i) : null}>
 					{colName ? <p className="cols" style={{width: cols_width}}>{colName}</p> : null}
 					{children ? children : title}
 				</th>
 			)
 		} else {
 			return (
-				<th key={i} className={cls} style={{height: top_height, width: width ? width : defaultWidth}}>
+				<th key={i} className={cls} style={{height: top_height, width: width ? width : defaultWidth}} onClick={sort ? this._sort.bind(this, value, i) : null}>
 					{colName ? <p className="cols" style={{width: cols_width}}>{colName}</p> : null}
 					{children ? children : title}
 				</th>
 			)
 		}
+	}
+
+	_sort(key, index) {
+		let {sortHandle} = this.props;
+		const {headC, conC} = this.refs;
+		let conC_trs = conC.getElementsByTagName("tr"),
+			headC_trs = headC.getElementsByTagName("tr"),
+			headC_tds = headC_trs[0].getElementsByTagName("th");
+		if(ClassCore.hasClass(headC_tds[index], 'active')) return false;
+		console.log('sort')
+		for(let i = 0; i < headC_tds.length; i++) {
+			if(index == i) {
+				ClassCore.addClass(headC_tds[i], 'active');
+			} else {
+				ClassCore.removeClass(headC_tds[i], 'active');
+			}
+		}
+		for(let i = 0; i < conC_trs.length; i++) {
+			let conC_tds = conC_trs[i].getElementsByTagName("td");
+			for(let j = 0; j < conC_tds.length; j++) {
+				if(index == j) {
+					ClassCore.addClass(conC_tds[j], 'active');
+				} else {
+					ClassCore.removeClass(conC_tds[j], 'active');
+				}
+			}
+		}
+		sortHandle(key, index)
 	}
 
 	// conT
@@ -291,17 +313,21 @@ class ScrollTable extends Component {
 		return (
 			<tr key={i}>
 				{data.map((col) => {
-					return this._renderFixedTitleCol(col, i)
+					return this._renderFixedTitleCol(col, i, row)
 				})}
 			</tr>
 		)
 	}
 	// conT内容
-	_renderFixedTitleCol(col, i) {
+	_renderFixedTitleCol(col, i, row) {
 		let {con_heights} = this.state;
 		return (
-			<td key={i} className="break-wrap" style={{height: con_heights[i]}}>{col}</td>
+			<td key={i} className="break-wrap" onClick={this._cb.bind(this, row)} style={{height: con_heights[i]}}>{col}</td>
 		)
+	}
+
+	_cb (record, e) {
+		this.props.cb(record);
 	}
 
 	// conC
@@ -375,7 +401,7 @@ class ScrollTable extends Component {
 							})}
 						</tbody>
 					</table>
-					<div className="panel"style={{paddingLeft: fixedWidth}}>
+					<div className="panel" style={{paddingLeft: fixedWidth}}>
 						<table className="con" ref="conC" style={{width: con_width}}>
 							<tbody>
 								{data.map((row, i) => {

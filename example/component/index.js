@@ -14,5 +14,6 @@ import Alert from './Alert'
 import Message from './Message'
 import WaterMark from './WaterMark'
 import ActionSheet from './ActionSheet'
+import ScrollSortTable from './ScrollSortTable'
 
-export {App, Home, List, DoubleList, Mask, Loading, Svg, Authority, Demo, ScrollTable, Button, ScrollPanel, Alert, Message, WaterMark, ActionSheet} 
+export {App, Home, List, DoubleList, Mask, Loading, Svg, Authority, Demo, ScrollTable, Button, ScrollPanel, Alert, Message, WaterMark, ActionSheet, ScrollSortTable} 

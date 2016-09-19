@@ -63,6 +63,10 @@ let Store = {
 			name: "ScrollPanel",
 			url: 'example/scrollpanel'
 		}, {
+			id: "ScrollSortTable",
+			name: "ScrollSortTable",
+			url: "example/scrollsorttable",
+		}, {
 			id: "ScrollTable",
 			name: "ScrollTable",
 			url: 'example/scrolltable'
