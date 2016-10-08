@@ -17,7 +17,7 @@ for(let i = 0; i < 20; i++) {
 export default class Example extends Component {
 	render() {
 		return (
-			<div>
+			<div ref="12312134123ds">
 				<List data={list} isLink={true} />
 			</div>
 		)

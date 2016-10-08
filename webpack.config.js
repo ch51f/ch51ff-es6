@@ -5,7 +5,7 @@ var publicPath = 'http://fch.net.fangstar.net:18080/';
 var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';	
 
 var devConfig = {
-	entry: ['babel-polyfill', path.resolve(__dirname, 'example/main'), hotMiddlewareScript],
+	entry: ['babel-polyfill', path.resolve(__dirname, 'redux/main'), hotMiddlewareScript],
 	// entry: path.resolve(__dirname, process.env.cd + '/main'),
 
 	output: {
