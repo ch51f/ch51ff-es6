@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
 import {Router, Route, IndexRoute} from 'react-router';
 
-import H from '../components/Home'
-import C from '../components/Counter'
 import App from '../components/App'
-
+import Cal from '../components/Calculator'
+import C from '../components/Counter'
 
 const PREFIX = "/example"
 
-const Home = {
+const Calculator = {
 	getComponent(nextState, cb) {
 		require.ensure([], (require) => {
-			cb(null, H)
+			cb(null, Cal)
 		})
 	}
 }
@@ -30,7 +29,7 @@ const rootRoute = {
 	childRoutes: [{
 		path: PREFIX,
 		component: App,
-		indexRoute: Home,
+		indexRoute: Calculator,
 		childRoutes: [Counter]
 	}]
 }

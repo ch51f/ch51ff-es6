@@ -1,0 +1,55 @@
+@import "../../common/less/base.less";
+
+.calculator {
+	.bg;
+	overflow: hidden;
+	position: absolute; left: 0; bottom: 0;
+	height: 100%;
+	width: 100%;
+	.control {
+		background: @color-white;
+		position: absolute; left: 0; bottom: 0;
+		height: 250px;
+		width: 100%;
+		.btn {
+			.txt-default;
+			.txt-c;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			float: left;
+			height: 50px;
+			line-height: 48px;
+			text-decoration: none;
+			width: 25%;
+		}
+		.btn:hover {
+			border: 3px solid transparent;
+			.bg;
+		}
+		.btn-2 {
+			width: 50%;
+		}
+	}
+	.show {
+		background: @color-white;
+		border-top: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+		height: 60px;
+		font-size: 30px;
+		width: 100%;
+		padding: 0 15px;
+		position: absolute; left: 0; bottom: 250px;
+		.inner {
+			.txt-r;
+			line-height: 58px;
+			word-break: normal;
+			overflow-x: auto;
+		}
+	}
+	.turn {
+		font-size: 40px;
+		.txt-c;
+		background: @color-white;
+		padding: 15px;
+	}
+}

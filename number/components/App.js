@@ -3,8 +3,7 @@ import React, {Component, PropTypes} from 'react'
 class App extends Component {
 	render() {
 		return (
-			<div>
-				<p>开始学习redux</p>	
+			<div className="app">
 				{this.props.children}
 			</div>
 		)

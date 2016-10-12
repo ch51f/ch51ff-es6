@@ -1,7 +1,9 @@
 import React, {Component, PropTypes} from 'react'
+import {connect} from 'react-redux'
 
 class Home extends Component {
 	render() {
+		console.log(this)
 		return (
 			<div>
 				<p>test</p>	
@@ -10,4 +12,8 @@ class Home extends Component {
 	}
 }
 
-export default Home
+export default connect(
+	state => ({
+		counter: state
+	})
+)(Home)
