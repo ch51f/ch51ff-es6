@@ -1,12 +1,12 @@
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
-
+ 
 class Show extends Component {
 	_turnNum(num) {
 		return parseFloat(num).toLocaleString();
 	}
 	_getOperation() {
-		let {operations} = this.props.Calculator;
+		let {data : operations} = this.props;
 		if(operations.length == 0) return "";
 		let operation = "";
 		for(let i = 0; i < operations.length; i++) {
@@ -22,18 +22,14 @@ class Show extends Component {
 	render() {
 		return(
 			<div className="show">
-				<div className="inner">{this.props.calculator.Calculator.data}</div>
+				<div className="inner">{this._getOperation()}</div>
 			</div>
 		)
 	}
 }
 
 Show.propTypes = {
-	dispatch: PropTypes.func.isRequired
+	data: PropTypes.array.isRequired
 }
 
-export default connect(
-	state => ({
-		calculator: state
-	})
-)(Show)
+export default Show

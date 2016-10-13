@@ -1,19 +1,37 @@
 import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 
-import {input} from '../actions/calculator'
+import {input, remove, clear, dot} from '../actions/calculator'
 
 import Control from './Control'
 import Show from './Show'
 import Turn from './Turn'
 
 class Calculator extends Component {
+	_input(txt) {
+		let {operations} = this.props;
+		let num = operations[operations.length - 1];
+		if(num.length > 14) {
+			alert("已到上限(15)");
+			return false;
+		}
+		this.props.dispatch(input(txt))
+	}
+	_remove() {
+		this.props.dispatch(remove())
+	}
+	_clear() {
+		this.props.dispatch(clear())
+	}
+	_dot() {
+		this.props.dispatch(dot())
+	}
 	render() {
+		let  {operations} = this.props;
 		return (
 			<div className="calculator">
-				<p onClick={() => action('HAHA')}>{this.props.calculator.Calculator.data}</p>
-				<Control />
-				<Show />
+				<Control input={this._input.bind(this)} remove={this._remove.bind(this)} clear={this._clear.bind(this)} dot={this._dot.bind(this)} />
+				<Show data={operations} />
 				<Turn />
 			</div>
 		)
@@ -22,6 +40,6 @@ class Calculator extends Component {
 
 export default connect(
 	state => ({
-		calculator: state
+		operations: state.Calculator.operations
 	})
 )(Calculator)
