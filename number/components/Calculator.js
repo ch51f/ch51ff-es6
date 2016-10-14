@@ -14,7 +14,8 @@ class Calculator extends Component {
 		if(num.length > 14) {
 			alert("已到上限(15)");
 			return false;
-		}
+		} 
+		// var reg = $(this).val().match(/\d+\.?\d{0,2}/);
 		this.props.dispatch(input(txt))
 	}
 	_remove() {

@@ -3,7 +3,7 @@ let data = {
 }
 
 function input(data, num_str) {
-	if(num_str == 0) {
+	if(num_str === "0") {
 		return data.toString()
 	} else {
 		return num_str += data

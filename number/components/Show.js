@@ -17,7 +17,7 @@ class Show extends Component {
 				operation += this._turnNum(text)
 			}
 		} 
-		return operation;
+		return "" + operation;
 	}
 	render() {
 		return(
