@@ -22,3 +22,16 @@ export function dot() {
 		type: "DOT"
 	}
 }
+
+export function operation(data) {
+	return {
+		type: "OPERATION",
+		data
+	}
+}
+
+export function result() {
+	return {
+		type: "RESULT"
+	}
+}
