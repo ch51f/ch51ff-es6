@@ -13,7 +13,7 @@
     "build-map": "babel src -d lib -s",
     "dev": "cross-env BABEL_ENV=cjs node dev.js",
     "less": "less public/less > public/css",
-    "p": "webpack --config webpack.production.config.js -p",
+    "p": "cross-env NODE_ENV=production webpack --config webpack.production.config.js -p",
     "start": "node server.js",
     "run-es": "babel-node src/utils.js"
   },

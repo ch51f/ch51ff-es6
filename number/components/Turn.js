@@ -1,9 +1,14 @@
 import React, {Component, PropTypes} from 'react'
 
 const DX = ["零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"];
-const DW = ["分", "角", "圆", "拾", "佰", "仟", "万", "亿"];
+const DW = ["分", "角", "圆", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "仟", "万"];
 
 class Turn extends Component {
+	componentDidMount() {
+		let {turn} = this.refs;
+		let height = document.body.offsetHeight - 315;
+		turn.style.height = height + "px";
+	}
 	_trunN(num) {
 		let temp = ""
 		temp += DX[num];
@@ -43,7 +48,7 @@ class Turn extends Component {
 		if(div.length > 1 && flag) {
 			if(div[1] != "") {
 				if(div[1] > 10) {
-					let j = Math.floor(div[1] / 10);
+					let j = Math.floor(div[1] / 10); 
 					temp += this._trunN(j);
 					temp += DW[1];
 					let f = "" + (div[1] % 10)
@@ -59,19 +64,39 @@ class Turn extends Component {
 		return temp;
 	}
 	_trunNum(num) {
+		let div = num.split(".");
+		let z = div[0];
 		let temp = "";
-		if(num > 100000000) {
-			let y = "" + (Math.floor(num) / 100000000)
-			temp += this._trun(y);
-			temp += DW[7]
-		} 
-		if(num > 10000) {
-			let w = "" + (Math.floor(num) / 10000)
-			temp += this._trun(w);
-			temp += DW[6]
+		if(num == 0) return "零圆整";
+		for(let i = 0; i< z.length; i++) {
+			temp += temp.charAt(temp.length - 1) == "零" && this._trunN(z[i]) == "零" ? "" : this._trunN(z[i]);
+			if(i != (z.length -1) && z[i] != 0 || (z.length - i + 1) == 6 || (z.length - i + 1) == 10) temp += DW[z.length - i + 1]
 		}
-		temp += this._trun(num, true)
-		return temp
+		temp = temp.replace(/(^零*)|(零*$)/g, "");  
+		temp = temp.replace(/(零万)/g, "万");  
+		temp = temp.replace(/(零亿)/g, "亿");  
+		temp = temp.replace(/(亿万)/g, "亿");  
+		temp += DW[2];
+		if(div.length > 1) {
+			let x = div[1];
+			if(x != "") {
+				if(x > 10) {
+					let j = Math.floor(x / 10); 
+					temp += this._trunN(j);
+					temp += DW[1];
+					let f = "" + (x % 10)
+					temp += this._trunN(f);
+					temp += DW[0];
+				} else {
+					let j = Math.floor(x);
+					temp += this._trunN(j);
+					temp += DW[1];
+				}
+			}
+		} else {
+			temp += "整"
+		}
+		return temp;
 	}
 	_getRes() {
 		let {data : operations} = this.props;
@@ -79,6 +104,9 @@ class Turn extends Component {
 		let res = ""
 
 		for(let i = 0; i < operations.length; i++) {
+			if(operations[i] > 1000000000000) {
+				return "无效的数字"
+			}
 			if(reg.test(operations[i])) {
 				res += this._trunNum(operations[i]);
 			} else {
@@ -89,7 +117,7 @@ class Turn extends Component {
 	}
 	render() {
 		return (
-			<div className="turn">{this._getRes()}</div>
+			<div ref="turn" className="turn">{this._getRes()}</div>
 		)
 	}
 }

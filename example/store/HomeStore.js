@@ -32,6 +32,14 @@ let Store = {
 			url: "example/doublelist",
 		}]
 	}, {
+		id: "F",
+		name: "F",
+		data: [{
+			id: "Form",
+			name: "Form",
+			url: "example/form",
+		}]
+	}, {
 		id: "L",
 		name: "L",
 		data: [{

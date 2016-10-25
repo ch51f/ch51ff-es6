@@ -5,7 +5,7 @@ import App from '../components/App'
 import Cal from '../components/Calculator'
 import C from '../components/Counter'
 
-const PREFIX = "/example"
+const PREFIX = "/number"
 
 const Calculator = {
 	getComponent(nextState, cb) {

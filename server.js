@@ -3,13 +3,14 @@ var path = require('path');
 var favicon = require('serve-favicon');
 
 // webpack + react 模块
-var react = require('./routes/react');
+var react = require('./routers/react');
+var number = require('./routers/number');
 
 // 百度地图模块
-var bmap = require('./routes/bmap');
+var bmap = require('./routers/bmap');
 
 // momentjs模块
-var moment = require('./routes/moment')
+var moment = require('./routers/moment')
 
 var app = express();
 var port = 18080;
@@ -30,6 +31,7 @@ app.get("/map", function(req, res) {
 });
 
 app.use("/example", react);
+app.use("/number", number);
 app.use("/bmap", bmap);
 app.use("/moment", moment);
 

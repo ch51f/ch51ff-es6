@@ -32,6 +32,10 @@ app.get("/example", function(req, res) {
 	res.sendFile(path.resolve(__dirname, "example/index.html"))
 });
 
+app.get("/number", function(req, res) {
+	res.sendFile(path.resolve(__dirname, "example/index.html"))
+});
+
 app.get("/example/*", function(req, res) {
 	res.sendFile(path.resolve(__dirname, "example/index.html"))
 });
