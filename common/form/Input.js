@@ -1,6 +1,5 @@
 /**
- * @description 按钮
- * @params type 类型 default text
+ * @description 输入框
  */
 
 import React, {Component, PropTypes} from 'react';
@@ -12,11 +11,11 @@ class Input extends Component {
 	}
 
 	render() {
-		let {type, label, placeholder, cls} = this.props;
+		let {type, label, placeholder, cls, name} = this.props;
 		return (
 			<div className={cls} >
 				{label ? <label className="label">{label}</label> : null}
-				<input className="input" type={type ? type : null} placeholder={placeholder ? placeholder : null} />
+				<input className="input" type={type ? type : null} name={name} placeholder={placeholder ? placeholder : null} />
 			</div>
 		)
 	}
@@ -26,11 +25,12 @@ Input.propTypes = {
 	type: PropTypes.string,
 	label: PropTypes.string,
 	placeholder: PropTypes.string,
-	cls: PropTypes.string
+	cls: PropTypes.string,
+	name: PropTypes.string.isRequired,
 }
 
 Input.defaultProps = {
-	cls: 'block-input'
+	cls: 'input-inner'
 }
 
 export default Input

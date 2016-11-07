@@ -1,18 +1,182 @@
+.label,
+.input,
+.select,
+.textarea,
+.checkbox,
+.radio,
+.select {
+	display: block;
+	padding: 0 15px;
+}
+
+.input,
+.select,
+.textarea {
+	border: 0 none;
+}
+
+.label {
+	.txt-muted;
+}
+
 .input-block {
-	.label,
-	.input {
-		display: block;
-		padding: 0 15px;
-		width: 100%;
-	}
+	border-bottom: 1px solid @color-border;
 	.label {
 		.bg;
 		line-height: 40px;
+		width: 100%;
 	}
 	.input {
-		border: 0 none;
-		border-bottom: 1px solid @color-border;
 		height: 45px;
-		line-height: 44px;
+		line-height: 45px;
+		width: 100%;
+	}
+}
+.input-inner {
+	.box;
+	border-bottom: 1px solid @color-border;
+	line-height: 45px;
+	.label {
+		padding: 0 0 0 15px;
+	}
+	.input {
+		.flex;
+		.txt-r;
+	}
+}
+
+.select-block {
+	.label {
+		.bg;
+		line-height: 40px;
+		width: 100%;
+	}
+	.select {
+		background-color: #fff;
+		height: 45px;
+		line-height: 45px;
+		width: 100%;
+	}
+}
+
+
+.textarea-block {
+	border-bottom: 1px solid @color-border;
+	.label {
+		.bg;
+		line-height: 40px;
+		width: 100%;
+	}
+	.textarea {
+		padding: 10px 15px;
+		width: 100%;
+	}
+}
+.textarea-inner {
+	.box;
+	border-bottom: 1px solid @color-border;
+	.label {
+		padding: 10px 0 0 15px;
+	}
+	.textarea {
+		.flex;
+		padding: 10px 5px;
+	}
+}
+
+.checkbox-box {
+	.label {
+		.bg;
+		line-height: 40px;
+		width: 100%;
+	}
+	.content {
+		.checkbox {
+			.box;
+			border-bottom: 1px solid @color-border;
+			line-height: 20px;
+			padding: 10px 15px;
+			vertical-align: top;
+			input {
+				display: none;
+			}
+			.checkbox-icon {
+				border: 2px solid #d2d2d2;
+				display: block;
+				height: 15px;
+				line-height: 15px;
+				margin: 3px 10px 0 0;
+				vertical-align: top;
+				position: relative;
+				width: 15px;
+			}
+			.checkbox-icon i {
+				background-color: transparent;
+				position: absolute; top: 50%; left: 50%;
+				margin: -2px 0 0 -2px;
+				height: 3px;
+				width: 3px;
+			}
+			:checked + .checkbox-icon {
+				border: 2px solid @color-primary;
+			}
+
+			:checked + .checkbox-icon i{
+				background-color: @color-primary;
+			}
+			.checkbox-txt {
+				.flex;
+			}
+ 		}
+	}
+}
+
+
+.radio-box {
+	.label {
+		.bg;
+		line-height: 40px;
+		width: 100%;
+	}
+	.content {
+		.radio {
+			.box;
+			border-bottom: 1px solid @color-border;
+			line-height: 20px;
+			padding: 10px 15px;
+			vertical-align: top;
+			input {
+				display: none;
+			}
+			.radio-icon {
+				border: 2px solid #d2d2d2;
+				border-radius: 50%;
+				display: block;
+				height: 15px;
+				line-height: 15px;
+				margin: 3px 10px 0 0;
+				vertical-align: top;
+				position: relative;
+				width: 15px;
+			}
+			.radio-icon i {
+				background-color: transparent;
+				border-radius: 50%;
+				position: absolute; top: 50%; left: 50%;
+				margin: -2px 0 0 -2px;
+				height: 3px;
+				width: 3px;
+			}
+			:checked + .radio-icon {
+				border: 2px solid @color-primary;
+			}
+
+			:checked + .radio-icon i{
+				background-color: @color-primary;
+			}
+			.checkbox-txt {
+				.flex;
+			}
+ 		}
 	}
 }
