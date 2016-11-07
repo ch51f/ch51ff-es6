@@ -180,3 +180,48 @@
  		}
 	}
 }
+
+.select-block {
+	border-bottom: 1px solid @color-border;
+	.label {
+		.bg;
+		line-height: 40px;
+		width: 100%;
+	}
+	.select {
+		height: 45px;
+		line-height: 45px;
+		padding: 0;
+		position: relative;
+		width: 100%;
+		input:disabled {
+			.txt-r;
+			background-color: #fff;
+			border: 0 none;
+			height: 45px;
+			line-height: 45px;
+			padding-right: 30px;
+			width: 100%;
+		}
+		.select-icon {
+			position: absolute;
+			height: 20px;
+			width: 20px;
+			right: 5px;
+			top: 50%;
+			margin-top: -10px;
+		}
+	}
+}
+.select-inner {
+	.box;
+	border-bottom: 1px solid @color-border;
+	line-height: 45px;
+	.label {
+		padding: 0 0 0 15px;
+	}
+	.select {
+		.flex;
+		.txt-r;
+	}
+}
