@@ -6,6 +6,7 @@ import TextareaBox from 'common/form/Textarea'
 import CheckboxBox from 'common/form/Checkbox'
 import RadioBox from 'common/form/Radio'
 import SelectBox from 'common/form/SelectBox'
+import Button from 'common/element/Button'
 
 const hobby = [{
 	key: 1,
@@ -26,21 +27,23 @@ export default class App extends Component {
 		return (
 			<div>
 				<h4 style={{padding: "15px", 'backgroundColor': "#ddd"}}>block式</h4>
-				<div>
+				<form ref="form-block">
 					<Input cls="input-block" label="您的账号:" name="user" placeholder="请输入您的账号" />
 					<Input cls="input-block" type="password" name="pwd" label="密码:" placeholder="请输入您的密码" />
 					<TextareaBox cls="textarea-block" name="detail" label="描述:" placeholder="描述" />
 					<CheckboxBox name="hobby" label="爱好:" data={hobby} />
-					<RadioBox name="hobby" label="爱好:" data={hobby} />
-					<SelectBox cls="select-block" name="hobby" label="爱好:" data={hobby} />
-				</div>
+					<RadioBox name="hobby1" label="爱好:" data={hobby} />
+					<SelectBox cls="select-block" name="hobby2" label="爱好:" data={hobby} />
+					<Button type="primary" block={true}>提交</Button>
+				</form>
 				<h4 style={{padding: "15px", 'backgroundColor': "#ddd"}}>inner式</h4>
-				<div>
+				<form ref="form-inline">
 					<Input label="您的账号:" name="user" placeholder="请输入您的账号" />
 					<Input type="password" name="pwd" label="密码:" placeholder="请输入您的密码" />
 					<TextareaBox label="描述:" name="detail" placeholder="描述" />
 					<SelectBox name="hobby" label="爱好:" data={hobby} />
-				</div>
+					<Button type="primary" block={true}>提交</Button>
+				</form>
 			</div>
 		)
 	}

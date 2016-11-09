@@ -222,6 +222,23 @@
 	}
 	.select {
 		.flex;
-		.txt-r;
+		position: relative;
+		input:disabled {
+			.txt-r;
+			background-color: #fff;
+			border: 0 none;
+			height: 45px;
+			line-height: 45px;
+			padding-right: 15px;
+			width: 100%;
+		}
+		.select-icon {
+			position: absolute;
+			height: 20px;
+			width: 20px;
+			right: 5px;
+			top: 50%;
+			margin-top: -10px;
+		}
 	}
 }
