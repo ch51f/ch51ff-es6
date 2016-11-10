@@ -7,22 +7,22 @@ export default class Example extends Component {
 		return (
 			<section>
 				<Button />
-				<Button type="primary" />
-				<Button type="info" />
-				<Button type="success" />
-				<Button type="warning" />
-				<Button type="emphasize" />
-				<Button type="primary" disabled={true} />
+				<Button cls_type="primary" />
+				<Button cls_type="info" />
+				<Button cls_type="success" />
+				<Button cls_type="warning" />
+				<Button cls_type="emphasize" />
+				<Button cls_type="primary" disabled={true} />
 
 				<Button block={true} />
-				<Button type="primary" block={true} />
-				<Button type="info" block={true} />
-				<Button type="success" block={true} />
-				<Button type="warning" block={true} />
-				<Button type="emphasize" block={true} />
-				<Button type="primary" block={true} disabled={true} />
+				<Button cls_type="primary" block={true} />
+				<Button cls_type="info" block={true} />
+				<Button cls_type="success" block={true} />
+				<Button cls_type="warning" block={true} />
+				<Button cls_type="emphasize" block={true} />
+				<Button cls_type="primary" block={true} disabled={true} />
 
-				<Button type="primary" block={true} url='/example' />
+				<Button cls_type="primary" block={true} url='/example' />
 			</section>
 		)
 	}

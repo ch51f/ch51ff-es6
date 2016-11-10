@@ -43,13 +43,14 @@ class SelectBox extends Component {
   }
 
 	render() {
-    let {action:show, val} = this.state;
+    let {action:show, val, key} = this.state;
 		let {label, cls, data, name} = this.props;
 		return (
 			<div className={cls} >
 				{label ? <label className="label">{label}</label> : null}
         <div className="select" onClick={this._openSheet.bind(this)}>
-          <input ref={name} name={name}  type="text" disabled='disabled' value={val}/>
+					<input ref={name} name={name} type="hidden" value={key}/>
+          <input type="text" disabled='disabled' value={val}/>
           <i className="select-icon"><ArrowRight size="20" color="#ddd" /></i>
         </div>
         <ActionSheet isShow={show} cancelHandel={this._cancelSheet.bind(this)}>

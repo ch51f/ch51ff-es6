@@ -17,14 +17,14 @@ class Button extends Component {
 	}
 
 	_renderButton() {
-		const {type, disabled, block, children, handler, url, out_link} = this.props;
+		const {type, cls_type, disabled, block, children, handler, url, out_link} = this.props;
 		let btnClass = classNames({
 			'btn-default': true,
-			'btn-primary': type === 'primary',
-			'btn-info': type === 'info',
-			'btn-warning': type === 'warning',
-			'btn-success': type === 'success',
-			'btn-emphasize': type === 'emphasize',
+			'btn-primary': cls_type === 'primary',
+			'btn-info': cls_type === 'info',
+			'btn-warning': cls_type === 'warning',
+			'btn-success': cls_type === 'success',
+			'btn-emphasize': cls_type === 'emphasize',
 			'btn-block': block,
 			'btn-disabled': disabled,
 		});
@@ -41,11 +41,11 @@ class Button extends Component {
 			}
 		} else if(handler) {
 			return (
-				<button className={btnClass} onClick={handler}>{children}</button>
+				<button type={type} className={btnClass} onClick={handler}>{children}</button>
 			)
 		} else {
 			return (
-				<button className={btnClass}>{children}</button>
+				<button type={type} className={btnClass}>{children}</button>
 			)
 		}
 	}
@@ -55,11 +55,12 @@ class Button extends Component {
 			this._renderButton()
 		)
 	}
-}	
+}
 
 Button.propTypes = {
 	children: PropTypes.string.isRequired,
-	type: PropTypes.string.isRequired,
+	type: PropTypes.string,
+	cls_type: PropTypes.string.isRequired,
 	disabled: PropTypes.bool.isRequired,
 	block: PropTypes.bool.isRequired,
 	handler: PropTypes.func,
@@ -69,7 +70,8 @@ Button.propTypes = {
 
 Button.defaultProps = {
 	children: '按钮',
-	type: "",
+	type: "button",
+	cls_type: "",
 	disabled: false,
 	block: false,
 }
