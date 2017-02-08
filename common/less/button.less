@@ -1,6 +1,5 @@
 .btn-default{
 	.border-none;
-	.border-radius;
 	.txt-default;
 	.txt-c;
 	background-color: darken(@color-background, 0%);
@@ -63,8 +62,17 @@
 	width: 100%;
 }
 
+.btn-fixed {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: 999;
+}
+
 .btn-disabled,
-.btn-disabled:active{
+.btn-disabled:active,
+.btn-disabled:hover{
 	background-color: @color-disabled;
-	color: @color-muted;
+	color: @color-lightest;
 }

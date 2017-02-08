@@ -1,5 +1,6 @@
 /**
  * @description Alert
+ * 需要改进
  */
 import React, {Component, PropTypes} from 'react'
 

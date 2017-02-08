@@ -39,7 +39,7 @@ class SelectBox extends Component {
   }
 
   _renderAction(item, index) {
-    return (<Action key={index} title={item.val} handel={this._actionHandel.bind(this, item.key)} />)
+    return (<Action key={index} title={item.val} handle={this._actionHandel.bind(this, item.key)} />)
   }
 
 	render() {

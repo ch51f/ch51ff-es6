@@ -1,10 +1,13 @@
 /**
  * @description 按钮
- * @params type 样式
+ * @params children 按钮内部结构
+ * @params type button type=""
+ * @params cls_type 按钮颜色样式
  * @params disaabled 是否禁用
- * @params type 样式
- * @params type 样式
- * @params type 样式
+ * @params block 是否是块按钮
+ * @params handler 按钮事件
+ * @params url 按钮内部链接
+ * @params out_link 按耐外部链接
  */
 
 import React, {Component, PropTypes} from 'react';
@@ -17,7 +20,7 @@ class Button extends Component {
 	}
 
 	_renderButton() {
-		const {type, cls_type, disabled, block, children, handler, url, out_link} = this.props;
+		const {type, cls_type, disabled, block, children, handler, url, out_link, fixed} = this.props;
 		let btnClass = classNames({
 			'btn-default': true,
 			'btn-primary': cls_type === 'primary',
@@ -27,6 +30,7 @@ class Button extends Component {
 			'btn-emphasize': cls_type === 'emphasize',
 			'btn-block': block,
 			'btn-disabled': disabled,
+			'btn-fixed': fixed,
 		});
 
 		if(url) {
@@ -65,7 +69,8 @@ Button.propTypes = {
 	block: PropTypes.bool.isRequired,
 	handler: PropTypes.func,
 	url: PropTypes.string,
-	out_link: PropTypes.bool
+	out_link: PropTypes.bool,
+	fixed: PropTypes.bool,
 }
 
 Button.defaultProps = {
@@ -74,6 +79,7 @@ Button.defaultProps = {
 	cls_type: "",
 	disabled: false,
 	block: false,
+	fixed: false,
 }
 
 export default Button;

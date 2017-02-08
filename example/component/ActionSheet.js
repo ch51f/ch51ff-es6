@@ -21,10 +21,10 @@ export default class Example extends Component {
 		return (
 			<section>
 				<ActionSheet isShow={show} cancelHandel={this._cancel.bind(this)}>
-					<Action title="示例菜单1" handel={this._actionHandel.bind(this, "示例菜单1")} />
-					<Action title="示例菜单2" handel={this._actionHandel.bind(this, "示例菜单2")} />
-					<Action title="示例菜单3" handel={this._actionHandel.bind(this, "示例菜单3")} />
-					<Action title="示例菜单4" handel={this._actionHandel.bind(this, "示例菜单4")} />
+					<Action title="示例菜单1" handle={this._actionHandel.bind(this, "示例菜单1")} />
+					<Action title="示例菜单2" handle={this._actionHandel.bind(this, "示例菜单2")} />
+					<Action title="示例菜单3" handle={this._actionHandel.bind(this, "示例菜单3")} />
+					<Action title="示例菜单4" handle={this._actionHandel.bind(this, "示例菜单4")} />
 				</ActionSheet>
 				<Mask isShow={show} />
 			</section>

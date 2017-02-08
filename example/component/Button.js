@@ -5,7 +5,7 @@ import Button from "common/element/Button"
 export default class Example extends Component {
 	render() {
 		return (
-			<section>
+			<section className="button-panel">
 				<Button />
 				<Button cls_type="primary" />
 				<Button cls_type="info" />
@@ -22,7 +22,7 @@ export default class Example extends Component {
 				<Button cls_type="emphasize" block={true} />
 				<Button cls_type="primary" block={true} disabled={true} />
 
-				<Button cls_type="primary" block={true} url='/example' />
+				<Button cls_type="primary" block={true} url='/example' fixed={true}>返回</Button>
 			</section>
 		)
 	}
